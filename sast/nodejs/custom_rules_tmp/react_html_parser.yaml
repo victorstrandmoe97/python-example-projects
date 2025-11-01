@@ -1,0 +1,19 @@
+rules:
+- id: react_html_parser
+  message: |
+    Untrusted user input in ReactHtmlParser can lead to XSS
+  metadata:
+    cwe: 
+      - "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    owasp: "A03:2021 Injection"
+    category: security
+    technology:
+      - react
+  severity: ERROR
+  languages:
+    - javascript
+    - typescript
+  patterns:
+    - pattern: ReactHtmlParser($X)
+    - pattern-not: ReactHtmlParser($X.sanitize(...))
+    - pattern-not: import ReactHtmlParser from 'react-html-parser'

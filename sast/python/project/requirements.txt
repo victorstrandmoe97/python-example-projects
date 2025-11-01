@@ -1,0 +1,5 @@
+certifi
+psutil
+python-dotenv
+cvss
+google-cloud-bigquery

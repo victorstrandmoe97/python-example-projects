@@ -1,0 +1,16 @@
+name: "Semgrep + Python Post-Processor"
+description: "Runs Semgrep using Makefile in TARGET_RUNTIME folder and processes results with Python"
+inputs:
+  TARGET_RUNTIME:
+    description: "Directory containing the Makefile and scan_output"
+    required: true
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.TARGET_RUNTIME }}
+
+branding:
+  icon: "search"
+  color: "blue"

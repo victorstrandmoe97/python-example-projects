@@ -1,0 +1,9 @@
+Scanning dir /work
+Failed to resolve gitignore for /work: Rel: can't make /work relative to 
+Failed to resolve gitignore for /work/node_modules: Rel: can't make /work/node_modules relative to 
+Failed to resolve gitignore for /work/package-lock.json: Rel: can't make /work/package-lock.json relative to 
+Scanned /work/package-lock.json file and found 1071 packages
+Failed to resolve gitignore for /work/package.json: Rel: can't make /work/package.json relative to 
+Failed to resolve gitignore for /work/scan_output: Rel: can't make /work/scan_output relative to 
+Scanning dir --format
+Failed to walk --format: lstat --format: no such file or directory

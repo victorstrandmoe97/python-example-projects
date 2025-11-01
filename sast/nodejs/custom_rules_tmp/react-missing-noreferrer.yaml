@@ -1,0 +1,34 @@
+rules:
+- id: react-missing-noreferrer
+  message: |
+    This anchor tag with 'target="_blank"' is missing 'noreferrer'.
+    A page opened with 'target="_blank"' can access the window object of the origin page.
+    This means it can manipulate the 'window.opener' property, which could redirect the origin page to a malicious URL.
+    This is called reverse tabnabbing. To prevent this, include 'rel=noreferrer' on this tag.
+  metadata:
+    cwe:
+      - 'CWE-200: Exposure of Sensitive Information to an Unauthorized Actor'
+    owasp: 'A01:2021 Broken Access Control'
+    references:
+      - https://web.dev/external-anchors-use-rel-noopener/
+      - https://html.spec.whatwg.org/multipage/links.html#link-type-noreferrer
+    category: security
+    technology:
+      - react
+  languages:
+    - typescript
+    - javascript
+  severity: WARNING
+  patterns:
+    - pattern: <$X target="_blank" />
+    - pattern-not: <$X target="_blank" rel=... />
+    - pattern-not: <$X href=... />
+    - pattern-not: <$X to=... />
+    - pattern-inside: <$X target="_blank" rel=... />
+    - pattern: 'React.createElement($A, {target: "_blank"}, ...)'
+    - pattern-not: 'React.createElement($A, {rel: ...}, ...)'
+    - pattern-not: 'React.createElement($A, {href: ...}, ...)'
+    - pattern: 'React.createElement($A, {target: "_blank", rel: $REL}, ...)'
+    - metavariable-regex:
+        metavariable: $REL
+        regex: '"((?!noreferrer).)*?"'

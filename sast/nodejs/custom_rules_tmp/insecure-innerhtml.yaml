@@ -1,0 +1,20 @@
+rules:
+- id: insecure-innerhtml
+  patterns:
+  - pattern: |
+      $EL.innerHTML = $HTML;
+  - pattern-not: |
+      $EL.innerHTML = "...";
+  message: |
+    User controlled data in a `$EL.innerHTML` is an anti-pattern that can lead to XSS vulnerabilities
+  metadata:
+    cwe: 
+      - "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    owasp: 'A02:2021 Cryptographic Failures'
+    category: security
+    technology:
+    - browser
+  languages:
+  - javascript
+  - typescript
+  severity: WARNING

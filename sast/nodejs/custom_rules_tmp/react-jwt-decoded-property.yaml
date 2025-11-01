@@ -1,0 +1,28 @@
+rules:
+- id: react-jwt-decoded-property
+  patterns:
+    - pattern-inside: |
+        import jwt_decode from "jwt-decode";
+        ...
+    - pattern-inside: |
+        $DECODED = jwt_decode($TOKEN,...);
+        ...
+    - pattern: $DECODED.$PROPERTY
+  message: |
+    Property decoded from JWT token without verifying and cannot be trustworthy.
+    This can lead to sensitive information exposure or security bypass if unverified tokens are trusted.
+  metadata:
+    category: security
+    technology:
+      - react
+    cwe:
+      - "CWE-310: Cryptographic Issues"
+    owasp:
+      - "A02:2021 - Cryptographic Failures"
+    references:
+      - https://owasp.org/Top10/A02_2021-Cryptographic_Failures/
+      - https://cwe.mitre.org/data/definitions/310.html
+  languages:
+    - typescript
+    - javascript
+  severity: WARNING

@@ -1,0 +1,468 @@
+{
+  "version": "1.119.0",
+  "results": [
+    {
+      "check_id": "python.lang.security.audit.eval-detected.eval-detected",
+      "path": "badpython.py",
+      "start": {
+        "line": 10,
+        "col": 1,
+        "offset": 237
+      },
+      "end": {
+        "line": 10,
+        "col": 17,
+        "offset": 253
+      },
+      "extra": {
+        "metavars": {},
+        "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+        "metadata": {
+          "source-rule-url": "https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b307-eval",
+          "cwe": [
+            "CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"
+          ],
+          "owasp": [
+            "A03:2021 - Injection"
+          ],
+          "asvs": {
+            "control_id": "5.2.4 Dyanmic Code Execution Features",
+            "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+            "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+            "version": "4"
+          },
+          "category": "security",
+          "technology": [
+            "python"
+          ],
+          "references": [
+            "https://owasp.org/Top10/A03_2021-Injection"
+          ],
+          "subcategory": [
+            "audit"
+          ],
+          "likelihood": "LOW",
+          "impact": "HIGH",
+          "confidence": "LOW",
+          "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+          "vulnerability_class": [
+            "Code Injection"
+          ],
+          "source": "https://semgrep.dev/r/python.lang.security.audit.eval-detected.eval-detected",
+          "shortlink": "https://sg.run/ZvrD",
+          "semgrep.dev": {
+            "rule": {
+              "origin": "community",
+              "r_id": 9635,
+              "rule_id": "gxU149",
+              "rv_id": 946341,
+              "url": "https://semgrep.dev/playground/r/xyTqnr7/python.lang.security.audit.eval-detected.eval-detected",
+              "version_id": "xyTqnr7"
+            }
+          }
+        },
+        "severity": "WARNING",
+        "fingerprint": "c23bcb9e22f1251ea27dab31cd8e89cd9af1d187302573506a7b4da10a7e2caf2b9c45b1bafbf7db3aa76ef528beb083297047bafdc64e911e6f15751c09afa1_0",
+        "lines": "eval(user_input)",
+        "is_ignored": false,
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+      "path": "badpython.py",
+      "start": {
+        "line": 16,
+        "col": 17,
+        "offset": 357
+      },
+      "end": {
+        "line": 16,
+        "col": 51,
+        "offset": 391
+      },
+      "extra": {
+        "metavars": {},
+        "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+        "metadata": {
+          "source-rule-url": "https://github.com/PyCQA/bandit/blob/d5f8fa0d89d7b11442fc6ec80ca42953974354c8/bandit/blacklists/calls.py#L59",
+          "cwe": [
+            "CWE-327: Use of a Broken or Risky Cryptographic Algorithm"
+          ],
+          "owasp": [
+            "A03:2017 - Sensitive Data Exposure",
+            "A02:2021 - Cryptographic Failures"
+          ],
+          "bandit-code": "B303",
+          "asvs": {
+            "control_id": "6.2.2 Insecure Custom Algorithm",
+            "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x14-V6-Cryptography.md#v62-algorithms",
+            "section": "V6 Stored Cryptography Verification Requirements",
+            "version": "4"
+          },
+          "references": [
+            "https://www.schneier.com/blog/archives/2012/10/when_will_we_se.html",
+            "https://www.trendmicro.com/vinfo/us/security/news/vulnerabilities-and-exploits/sha-1-collision-signals-the-end-of-the-algorithm-s-viability",
+            "http://2012.sharcs.org/slides/stevens.pdf",
+            "https://pycryptodome.readthedocs.io/en/latest/src/hash/sha3_256.html"
+          ],
+          "category": "security",
+          "technology": [
+            "python"
+          ],
+          "subcategory": [
+            "vuln"
+          ],
+          "likelihood": "LOW",
+          "impact": "MEDIUM",
+          "confidence": "MEDIUM",
+          "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+          "vulnerability_class": [
+            "Cryptographic Issues"
+          ],
+          "source": "https://semgrep.dev/r/python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+          "shortlink": "https://sg.run/vYrY",
+          "semgrep.dev": {
+            "rule": {
+              "origin": "community",
+              "r_id": 33633,
+              "rule_id": "PeU2e2",
+              "rv_id": 946401,
+              "url": "https://semgrep.dev/playground/r/vdTGnR5/python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+              "version_id": "vdTGnR5"
+            }
+          }
+        },
+        "severity": "WARNING",
+        "fingerprint": "a2cd0630aa3120cca59a9ac8f379c228ac692885338a21766d6eeea1210ebf8d9554ab3361bb82877b4179e23e932ef23c7bb2e2bc901c412663f49d06dda9fa_0",
+        "lines": "password_hash = hashlib.md5(\"mypassword\".encode()).hexdigest()",
+        "is_ignored": false,
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+      "path": "badpython.py",
+      "start": {
+        "line": 16,
+        "col": 17,
+        "offset": 357
+      },
+      "end": {
+        "line": 16,
+        "col": 63,
+        "offset": 403
+      },
+      "extra": {
+        "metavars": {
+          "$1": {
+            "start": {
+              "line": 1,
+              "col": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "col": 45,
+              "offset": 44
+            },
+            "abstract_content": "hashlib.md5(\"mypassword\".encode()).hexdigest"
+          },
+          "$FUNCTION": {
+            "start": {
+              "line": 16,
+              "col": 17,
+              "offset": 357
+            },
+            "end": {
+              "line": 16,
+              "col": 61,
+              "offset": 401
+            },
+            "abstract_content": "hashlib.md5(\"mypassword\".encode()).hexdigest"
+          }
+        },
+        "message": "It looks like MD5 is used as a password hash. MD5 is not considered a secure password hash because it can be cracked by an attacker in a short amount of time. Use a suitable password hashing function such as scrypt. You can use `hashlib.scrypt`.",
+        "metadata": {
+          "cwe": [
+            "CWE-327: Use of a Broken or Risky Cryptographic Algorithm"
+          ],
+          "owasp": [
+            "A03:2017 - Sensitive Data Exposure",
+            "A02:2021 - Cryptographic Failures"
+          ],
+          "references": [
+            "https://tools.ietf.org/html/rfc6151",
+            "https://crypto.stackexchange.com/questions/44151/how-does-the-flame-malware-take-advantage-of-md5-collision",
+            "https://pycryptodome.readthedocs.io/en/latest/src/hash/sha3_256.html",
+            "https://security.stackexchange.com/questions/211/how-to-securely-hash-passwords",
+            "https://github.com/returntocorp/semgrep-rules/issues/1609",
+            "https://docs.python.org/3/library/hashlib.html#hashlib.scrypt"
+          ],
+          "category": "security",
+          "technology": [
+            "pycryptodome",
+            "hashlib",
+            "md5"
+          ],
+          "subcategory": [
+            "vuln"
+          ],
+          "likelihood": "HIGH",
+          "impact": "LOW",
+          "confidence": "MEDIUM",
+          "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+          "vulnerability_class": [
+            "Cryptographic Issues"
+          ],
+          "source": "https://semgrep.dev/r/python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+          "shortlink": "https://sg.run/5DwD",
+          "semgrep.dev": {
+            "rule": {
+              "origin": "community",
+              "r_id": 14703,
+              "rule_id": "6JU1w1",
+              "rv_id": 946368,
+              "url": "https://semgrep.dev/playground/r/l4Tx9Rp/python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+              "version_id": "l4Tx9Rp"
+            }
+          }
+        },
+        "severity": "WARNING",
+        "fingerprint": "8a26bb37380bd0a45e98acef34878e92f17cb7454975f663e3e2862fdf033ebd66a20e78f1897a32ed3cd74b21c88ca25e480fffb172243a10bf2188088d48db_0",
+        "lines": "password_hash = hashlib.md5(\"mypassword\".encode()).hexdigest()",
+        "is_ignored": false,
+        "validation_state": "NO_VALIDATOR",
+        "dataflow_trace": {
+          "taint_source": [
+            "CliLoc",
+            [
+              {
+                "path": "badpython.py",
+                "start": {
+                  "line": 16,
+                  "col": 17,
+                  "offset": 357
+                },
+                "end": {
+                  "line": 16,
+                  "col": 28,
+                  "offset": 368
+                }
+              },
+              "hashlib.md5"
+            ]
+          ],
+          "intermediate_vars": [],
+          "taint_sink": [
+            "CliLoc",
+            [
+              {
+                "path": "badpython.py",
+                "start": {
+                  "line": 16,
+                  "col": 17,
+                  "offset": 357
+                },
+                "end": {
+                  "line": 16,
+                  "col": 63,
+                  "offset": 403
+                }
+              },
+              "hashlib.md5(\"mypassword\".encode()).hexdigest()"
+            ]
+          ]
+        },
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "path": "main.py",
+      "start": {
+        "line": 131,
+        "col": 18,
+        "offset": 4834
+      },
+      "end": {
+        "line": 131,
+        "col": 75,
+        "offset": 4891
+      },
+      "extra": {
+        "metavars": {},
+        "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+        "metadata": {
+          "cwe": [
+            "CWE-939: Improper Authorization in Handler for Custom URL Scheme"
+          ],
+          "owasp": "A01:2017 - Injection",
+          "source-rule-url": "https://github.com/PyCQA/bandit/blob/b1411bfb43795d3ffd268bef17a839dee954c2b1/bandit/blacklists/calls.py#L163",
+          "bandit-code": "B310",
+          "asvs": {
+            "control_id": "5.2.4 Dynamic Code Execution Features",
+            "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+            "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+            "version": "4"
+          },
+          "category": "security",
+          "technology": [
+            "python"
+          ],
+          "references": [
+            "https://cwe.mitre.org/data/definitions/939.html"
+          ],
+          "subcategory": [
+            "audit"
+          ],
+          "likelihood": "LOW",
+          "impact": "LOW",
+          "confidence": "LOW",
+          "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+          "vulnerability_class": [
+            "Improper Authorization"
+          ],
+          "source": "https://semgrep.dev/r/python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+          "shortlink": "https://sg.run/dKZZ",
+          "semgrep.dev": {
+            "rule": {
+              "origin": "community",
+              "r_id": 9634,
+              "rule_id": "8GUj22",
+              "rv_id": 946340,
+              "url": "https://semgrep.dev/playground/r/w8TKJbO/python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+              "version_id": "w8TKJbO"
+            }
+          }
+        },
+        "severity": "WARNING",
+        "fingerprint": "03885d9ee22bb83150c077e450c3fbaa0f698cd224fb14ae6a8c42cd35878522a0f17678258ecd34a6e3997e841b1bc4426ae431e30dddd8d668b84ef422633c_0",
+        "lines": "            with urllib.request.urlopen(zip_download_url, context=context) as response:",
+        "is_ignored": false,
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    }
+  ],
+  "errors": [],
+  "paths": {
+    "scanned": [
+      "badpython.py",
+      "config.py",
+      "ingest_to_main_table.py",
+      "main.py",
+      "transform.py"
+    ],
+    "skipped": [
+      {
+        "path": ".env",
+        "reason": "cli_exclude_flags_match"
+      },
+      {
+        "path": "__pycache__",
+        "reason": "cli_exclude_flags_match"
+      },
+      {
+        "path": "deploy.sh",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "docker/Dockerfile",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "docker/entrypoint.sh",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "requirements.txt",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "run/OSS-Fuzz/java/vulnerabilities.transformed.jsonl",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "run/OSS-Fuzz/other/vulnerabilities.transformed.jsonl",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "run/OSS-Fuzz/python/vulnerabilities.transformed.jsonl",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "run/OSS-Fuzz/spring/vulnerabilities.transformed.jsonl",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "run/OSS-Fuzz/vulnerabilities.jsonl",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "run/PyPI/python/vulnerabilities.transformed.jsonl",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "run/PyPI/vulnerabilities.jsonl",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "terraform/.terraform/providers/registry.terraform.io/hashicorp/google/5.45.2/darwin_arm64/LICENSE.txt",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "terraform/.terraform/providers/registry.terraform.io/hashicorp/google/5.45.2/darwin_arm64/terraform-provider-google_v5.45.2_x5",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "terraform/.terraform.lock.hcl",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "terraform/bigquery.tf",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "terraform/cloud_run_job.tf",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "terraform/iam.tf",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "terraform/main.tf",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "terraform/scheduler_job.tf",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "terraform/schemas/audit_schema.json",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "terraform/schemas/vuln_dictionary_schema.json",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "terraform/terraform.tfstate",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "terraform/terraform.tfstate.backup",
+        "reason": "cli_include_flags_do_not_match"
+      },
+      {
+        "path": "terraform/variables.tf",
+        "reason": "cli_include_flags_do_not_match"
+      }
+    ]
+  },
+  "interfile_languages_used": [],
+  "skipped_rules": []
+}

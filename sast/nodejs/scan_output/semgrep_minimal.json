@@ -1,0 +1,148 @@
+{
+  "results": [
+    {
+      "file": "RouterClientLogger.ts",
+      "line": 12,
+      "rule_id": "javascript.express.log.console-log-express.console-log-express",
+      "message": "Detected a logger that logs user input without properly neutralizing the output. The log message could contain characters like ` ` and ` ` and cause an attacker to forge log entries or include malicious content into the logs. Use proper input validation and/or output encoding to prevent log entries from being forged.",
+      "likelihood": "LOW",
+      "impact": "LOW",
+      "confidence": "HIGH",
+      "cwe": [
+        "CWE-117: Improper Output Neutralization for Logs"
+      ],
+      "owasp": [
+        "A09:2021 - Security Logging and Monitoring Failures"
+      ],
+      "references": [
+        "https://owasp.org/Top10/A09_2021-Security_Logging_and_Monitoring_Failures"
+      ],
+      "vulnerability_class": [
+        "Improper Validation"
+      ]
+    },
+    {
+      "file": "src/server/ai/assistants/Assistant.ts.ts",
+      "line": 55,
+      "rule_id": "custom_rules.detect-bracket-object-injection",
+      "message": "Object injection via bracket notation via 0\n",
+      "likelihood": "HIGH",
+      "impact": "HIGH",
+      "confidence": "MEDIUM",
+      "cwe": [
+        "CWE-20: Improper Input Validation"
+      ],
+      "owasp": [
+        "A03:2021 - Injection"
+      ],
+      "references": [
+        "https://cwe.mitre.org/data/definitions/20.html",
+        "https://owasp.org/Top10/A03_2021-Injection"
+      ],
+      "vulnerability_class": null
+    },
+    {
+      "file": "src/server/ai/assistants/Assistant.ts.ts",
+      "line": 56,
+      "rule_id": "custom_rules.detect-bracket-object-injection",
+      "message": "Object injection via bracket notation via 1\n",
+      "likelihood": "HIGH",
+      "impact": "HIGH",
+      "confidence": "MEDIUM",
+      "cwe": [
+        "CWE-20: Improper Input Validation"
+      ],
+      "owasp": [
+        "A03:2021 - Injection"
+      ],
+      "references": [
+        "https://cwe.mitre.org/data/definitions/20.html",
+        "https://owasp.org/Top10/A03_2021-Injection"
+      ],
+      "vulnerability_class": null
+    },
+    {
+      "file": "src/server/api/utils/HttpRequestUtils.ts",
+      "line": 59,
+      "rule_id": "custom_rules.detect-bracket-object-injection",
+      "message": "Object injection via bracket notation via i\n",
+      "likelihood": "HIGH",
+      "impact": "HIGH",
+      "confidence": "MEDIUM",
+      "cwe": [
+        "CWE-20: Improper Input Validation"
+      ],
+      "owasp": [
+        "A03:2021 - Injection"
+      ],
+      "references": [
+        "https://cwe.mitre.org/data/definitions/20.html",
+        "https://owasp.org/Top10/A03_2021-Injection"
+      ],
+      "vulnerability_class": null
+    },
+    {
+      "file": "src/server/utils/JsonLogger.ts",
+      "line": 7,
+      "rule_id": "javascript.lang.security.audit.unsafe-formatstring.unsafe-formatstring",
+      "message": "Detected string concatenation with a non-literal variable in a util.format / console.log function. If an attacker injects a format specifier in the string, it will forge the log message. Try to use constant values for the format string.",
+      "likelihood": "MEDIUM",
+      "impact": "LOW",
+      "confidence": "LOW",
+      "cwe": [
+        "CWE-134: Use of Externally-Controlled Format String"
+      ],
+      "owasp": [
+        "A01:2021 - Broken Access Control"
+      ],
+      "references": [
+        "https://cwe.mitre.org/data/definitions/134.html"
+      ],
+      "vulnerability_class": [
+        "Improper Validation"
+      ]
+    },
+    {
+      "file": "src/server/utils/JsonLogger.ts",
+      "line": 13,
+      "rule_id": "javascript.lang.security.audit.unsafe-formatstring.unsafe-formatstring",
+      "message": "Detected string concatenation with a non-literal variable in a util.format / console.log function. If an attacker injects a format specifier in the string, it will forge the log message. Try to use constant values for the format string.",
+      "likelihood": "MEDIUM",
+      "impact": "LOW",
+      "confidence": "LOW",
+      "cwe": [
+        "CWE-134: Use of Externally-Controlled Format String"
+      ],
+      "owasp": [
+        "A01:2021 - Broken Access Control"
+      ],
+      "references": [
+        "https://cwe.mitre.org/data/definitions/134.html"
+      ],
+      "vulnerability_class": [
+        "Improper Validation"
+      ]
+    },
+    {
+      "file": "src/server/utils/JsonLogger.ts",
+      "line": 20,
+      "rule_id": "javascript.lang.security.audit.unsafe-formatstring.unsafe-formatstring",
+      "message": "Detected string concatenation with a non-literal variable in a util.format / console.log function. If an attacker injects a format specifier in the string, it will forge the log message. Try to use constant values for the format string.",
+      "likelihood": "MEDIUM",
+      "impact": "LOW",
+      "confidence": "LOW",
+      "cwe": [
+        "CWE-134: Use of Externally-Controlled Format String"
+      ],
+      "owasp": [
+        "A01:2021 - Broken Access Control"
+      ],
+      "references": [
+        "https://cwe.mitre.org/data/definitions/134.html"
+      ],
+      "vulnerability_class": [
+        "Improper Validation"
+      ]
+    }
+  ]
+}

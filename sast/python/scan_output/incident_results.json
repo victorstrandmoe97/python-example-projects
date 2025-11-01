@@ -1,0 +1,33 @@
+{
+  "owasp": [
+    {
+      "owasp_top_ten": "Injection",
+      "last_incident": {
+        "value": "2025-08-29T16:59:07.498Z"
+      },
+      "incidents": 76,
+      "new_vulns_ident": 217,
+      "sample_start_date": {
+        "value": "2025-07-25T19:46:24.316205000Z"
+      },
+      "sample_end_date": {
+        "value": "2025-08-29T19:46:24.316205000Z"
+      }
+    },
+    {
+      "owasp_top_ten": "Cryptographic Failures",
+      "last_incident": {
+        "value": "2025-08-28T21:40:43.750Z"
+      },
+      "incidents": 6,
+      "new_vulns_ident": 11,
+      "sample_start_date": {
+        "value": "2025-07-25T19:46:24.316205000Z"
+      },
+      "sample_end_date": {
+        "value": "2025-08-29T19:46:24.316205000Z"
+      }
+    }
+  ],
+  "weaknesses": []
+}

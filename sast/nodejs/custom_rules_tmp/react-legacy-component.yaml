@@ -1,0 +1,27 @@
+rules:
+- id: react-legacy-component
+  patterns:
+    - pattern: |
+        $METHOD(...) {
+          ...
+        }
+    - metavariable-regex:
+        metavariable: $METHOD
+        regex: componentWillMount|componentWillReceiveProps|componentWillUpdate
+  message: |
+    Legacy component lifecycle method detected: $METHOD. Consider updating to newer React lifecycle methods (or hooks) for better maintainability and future-proofing.
+  languages:
+    - typescript
+    - javascript
+  severity: WARNING
+  metadata:
+    category: best-practice
+    technology:
+      - react
+    cwe:
+      - "CWE-710: Improper Adherence to Coding Standards"
+    owasp:
+      - "A06:2021 - Vulnerable and Outdated Components" 
+    references:
+      - https://reactjs.org/docs/react-component.html#unsafe_componentwillmount
+      - https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/

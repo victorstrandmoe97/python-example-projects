@@ -1,0 +1,19 @@
+Scanning dir /work
+Failed to resolve gitignore for /work: Rel: can't make /work relative to 
+Failed to resolve gitignore for /work/.DS_Store: Rel: can't make /work/.DS_Store relative to 
+Failed to resolve gitignore for /work/.env: Rel: can't make /work/.env relative to 
+Failed to resolve gitignore for /work/config.py: Rel: can't make /work/config.py relative to 
+Failed to resolve gitignore for /work/deploy.sh: Rel: can't make /work/deploy.sh relative to 
+Failed to resolve gitignore for /work/extract_metadata.py: Rel: can't make /work/extract_metadata.py relative to 
+Failed to resolve gitignore for /work/ingest_to_main_table.py: Rel: can't make /work/ingest_to_main_table.py relative to 
+Failed to resolve gitignore for /work/main.py: Rel: can't make /work/main.py relative to 
+Failed to resolve gitignore for /work/output_metadata.json: Rel: can't make /work/output_metadata.json relative to 
+Failed to resolve gitignore for /work/prod.env: Rel: can't make /work/prod.env relative to 
+Failed to resolve gitignore for /work/requirements.lock: Rel: can't make /work/requirements.lock relative to 
+Failed to resolve gitignore for /work/requirements.txt: Rel: can't make /work/requirements.txt relative to 
+Scanned /work/requirements.txt file and found 4 packages
+Failed to resolve gitignore for /work/scan_output: Rel: can't make /work/scan_output relative to 
+Failed to resolve gitignore for /work/transform.py: Rel: can't make /work/transform.py relative to 
+Failed to resolve gitignore for /work/venv: Rel: can't make /work/venv relative to 
+Scanning dir --format
+Failed to walk --format: lstat --format: no such file or directory

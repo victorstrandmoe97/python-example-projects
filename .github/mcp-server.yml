@@ -1,0 +1,129 @@
+name: MCP Security (local MCP in CI)
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  mcp-security:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y jq
+          python -m pip install --upgrade pip
+          # fastmcp = your MCP framework
+          # semgrep = the security scan
+          # transformers/... = for the HF remediation in your server code
+          python -m pip install fastmcp semgrep transformers accelerate safetensors
+
+      # if your repo does NOT already have mcp_server.py, uncomment this:
+      # - name: Download mcp_server.py
+      #   run: |
+      #     curl -o mcp_server.py https://raw.githubusercontent.com/rymarinelli/MPC_OWASP_POC/main/mcp_server.py
+
+      - name: Start MCP server (in background)
+        run: |
+          # start your server on 0.0.0.0:8000
+          nohup python mcp_server.py > mcp.log 2>&1 &
+          # give it a moment to start
+          sleep 7
+          echo "MCP server started."
+
+      - name: Call MCP scan_repo
+        run: |
+          python - << 'PY'
+          import json, urllib.request
+          mcp_url = "http://127.0.0.1:8000/call_tool"
+          payload = {
+              "tool_name": "scan_repo",
+              "params": {
+                  "repo_path": ".",
+                  "semgrep_config": "p/ci",
+                  "llm_proposal": True
+              }
+          }
+          data = json.dumps(payload).encode("utf-8")
+          req = urllib.request.Request(
+              mcp_url,
+              data=data,
+              headers={"Content-Type": "application/json"},
+              method="POST",
+          )
+          with urllib.request.urlopen(req) as resp:
+              result = json.loads(resp.read().decode("utf-8"))
+          with open("mcp_scan.json", "w") as f:
+              json.dump(result, f)
+          PY
+
+      - name: (Optional) Call MCP remediate
+        continue-on-error: true
+        run: |
+          python - << 'PY'
+          import json, urllib.request
+          mcp_url = "http://127.0.0.1:8000/call_tool"
+          payload = {
+              "tool_name": "remediate",
+              "params": {
+                  "scan_results_path": "results/scan.json"
+              }
+          }
+          data = json.dumps(payload).encode("utf-8")
+          req = urllib.request.Request(
+              mcp_url,
+              data=data,
+              headers={"Content-Type": "application/json"},
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(req) as resp:
+                  result = json.loads(resp.read().decode("utf-8"))
+              with open("mcp_remediate.json", "w") as f:
+                  json.dump(result, f)
+          except Exception as e:
+              print(f"Remediation failed: {e}")
+          PY
+
+      - name: Prepare PR comment
+        if: github.event_name == 'pull_request'
+        run: |
+          COUNT=$(jq '.findings | length' mcp_scan.json)
+          REPORT=$(jq -r '.llm_proposal' mcp_scan.json)
+          MODEL=$(jq -r '.model_used // "N/A"' mcp_scan.json)
+
+          {
+            echo "### 🧩 MCP Security Validation (local CI run)"
+            echo "**Findings:** ${COUNT}"
+            echo "**Model:** ${MODEL}"
+            echo
+            echo "#### Proposed remediation (LLM):"
+            echo "${REPORT}"
+          } > body.md
+
+      - name: Post PR comment
+        if: github.event_name == 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body-file body.md
+
+      - name: Show logs
+        if: always()
+        run: |
+          echo "---- mcp.log ----"
+          cat mcp.log || true
+          echo "---- mcp_scan.json ----"
+          cat mcp_scan.json || true

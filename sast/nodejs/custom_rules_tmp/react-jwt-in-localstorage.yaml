@@ -1,0 +1,33 @@
+rules:
+- id: react-jwt-in-localstorage
+  patterns:
+    - pattern-inside: |
+        import jwt_decode from "jwt-decode";
+        ...
+    - pattern-either:
+        - pattern: |
+            $DECODED = jwt_decode($TOKEN,...);
+            ...
+            localStorage.setItem($NAME, <... $TOKEN ...>);
+        - pattern: |
+            $DECODED = jwt_decode(...);
+            ...
+            localStorage.setItem($NAME, <... $DECODED ...>);
+  message: |
+    Storing JWT tokens in localStorage is insecure. Consider moving your tokens to secure HTTP-only cookies to prevent XSS-based token theft.
+  metadata:
+    category: security
+    technology:
+      - react
+    cwe:
+      - "CWE-922: Insecure Storage of Sensitive Information"
+    owasp:
+      - "A03:2021 - Injection"
+    references:
+      - https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
+      - https://cwe.mitre.org/data/definitions/922.html
+      - https://owasp.org/Top10/A03_2021-Injection/
+  languages:
+    - typescript
+    - javascript
+  severity: WARNING

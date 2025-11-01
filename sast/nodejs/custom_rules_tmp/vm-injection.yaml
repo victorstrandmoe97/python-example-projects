@@ -1,0 +1,114 @@
+rules:
+- id: vm-script-code-injection
+  message: |
+    Make sure that unverified user data can not reach vm.Script.
+  severity: WARNING
+  languages:
+    - javascript
+    - typescript
+  metadata:
+    owasp: 'A03:2021 Injection'
+    cwe:
+      - 'CWE-94: Improper Control of Generation of Code (Code Injection)'
+    category: security
+  patterns:
+    - pattern-inside: |
+        $VM = require('vm');
+        ...
+    - pattern: "new $VM.Script($CODE,...)"
+    - pattern-not: "new $VM.Script(\"...\",...)"
+
+- id: vm-sourcetextmodule-code-injection
+  message: |
+    Make sure that unverified user data can not reach vm.SourceTextModule.
+  severity: WARNING
+  languages:
+    - javascript
+    - typescript
+  metadata:
+    owasp: 'A03:2021 Injection'
+    cwe:
+      - 'CWE-94: Improper Control of Generation of Code (Code Injection)'
+    category: security
+  patterns:
+    - pattern-inside: |
+        $VM = require('vm');
+        ...
+    - pattern: "new $VM.SourceTextModule($CODE,...)"
+    - pattern-not: "new $VM.SourceTextModule(\"...\",...)"
+
+- id: vm-runincontext-code-injection
+  message: |
+    Make sure that unverified user data can not reach vm.runInContext.
+  severity: WARNING
+  languages:
+    - javascript
+    - typescript
+  metadata:
+    owasp: 'A03:2021 Injection'
+    cwe:
+      - 'CWE-94: Improper Control of Generation of Code (Code Injection)'
+    category: security
+  patterns:
+    - pattern-inside: |
+        $VM = require('vm');
+        ...
+    - pattern: "$VM.runInContext($CODE,...)"
+    - pattern-not: "$VM.runInContext(\"...\",...)"
+
+- id: vm-runinnewcontext-code-injection
+  message: |
+    Make sure that unverified user data can not reach vm.runInNewContext.
+  severity: WARNING
+  languages:
+    - javascript
+    - typescript
+  metadata:
+    owasp: 'A03:2021 Injection'
+    cwe:
+      - 'CWE-94: Improper Control of Generation of Code (Code Injection)'
+    category: security
+  patterns:
+    - pattern-inside: |
+        $VM = require('vm');
+        ...
+    - pattern: "$VM.runInNewContext($CODE,...)"
+    - pattern-not: "$VM.runInNewContext(\"...\",...)"
+
+- id: vm-runinthiscontext-code-injection
+  message: |
+    Make sure that unverified user data can not reach vm.runInThisContext.
+  severity: WARNING
+  languages:
+    - javascript
+    - typescript
+  metadata:
+    owasp: 'A03:2021 Injection'
+    cwe:
+      - 'CWE-94: Improper Control of Generation of Code (Code Injection)'
+    category: security
+  patterns:
+    - pattern-inside: |
+        $VM = require('vm');
+        ...
+    - pattern: "$VM.runInThisContext($CODE,...)"
+    - pattern-not: "$VM.runInThisContext(\"...\",...)"
+
+- id: vm-compilefunction-code-injection
+  message: |
+    Make sure that unverified user data can not reach vm.compileFunction.
+  severity: WARNING
+  languages:
+    - javascript
+    - typescript
+  metadata:
+    owasp: 'A03:2021 Injection'
+    cwe:
+      - 'CWE-94: Improper Control of Generation of Code (Code Injection)'
+    category: security
+  patterns:
+    - pattern-inside: |
+        $VM = require('vm');
+        ...
+    - pattern: "$VM.compileFunction($CODE,...)"
+    - pattern-not: "$VM.compileFunction(\"...\",...)"

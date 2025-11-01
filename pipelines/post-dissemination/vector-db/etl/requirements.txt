@@ -1,0 +1,9 @@
+google-cloud-bigquery
+python-dotenv
+openai
+numpy
+faiss-cpu
+openai
+psycopg2-binary
+SQLAlchemy
+tiktoken

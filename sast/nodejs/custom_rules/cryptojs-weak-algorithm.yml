@@ -1,0 +1,33 @@
+rules:
+  - id: javascript.crypto-js.cryptojs-weak-algorithm.cryptojs-weak-algorithm
+    message: >
+      The use of a weak hashing algorithm (e.g., SHA-1 or MD5) has been
+      identified. These algorithms are considered insecure due to
+      vulnerabilities that make them susceptible to collision attacks.
+      Replace SHA-1 or MD5 with secure algorithms such as SHA-256 or higher.
+    severity: WARNING
+    metadata:
+      likelihood: LOW
+      impact: HIGH
+      confidence: HIGH
+      category: security
+      subcategory: [vuln]
+      cwe: ["CWE-327: Use of a Broken or Risky Cryptographic Algorithm"]
+      owasp:
+        - A02:2021 - Cryptographic Failures
+      references:
+        - https://owasp.org/Top10/A02_2021-Cryptographic_Failures
+      technology: [crypto-js]
+      vulnerability_class: [Cryptographic Issues]
+    languages: [javascript, typescript]
+    min-version: 1.91.0
+    options:
+      interfile: true
+      symbolic_propagation: true
+    pattern-either:
+      - pattern: MD5(...)
+      - pattern: SHA1(...)
+      - pattern: CryptoJS.MD5(...)
+      - pattern: CryptoJS.SHA1(...)
+      - pattern: cryptoJS.MD5(...)
+      - pattern: cryptoJS.SHA1(...)

@@ -1,0 +1,24 @@
+rules:
+- id: react-unsanitized-property
+  message: |
+    Assigning user-controlled data to `innerHTML` or `outerHTML` can lead to XSS vulnerabilities.
+  metadata:
+    cwe: 
+      - "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    owasp: "A07:2021 - Cross-Site Scripting (XSS)"
+    category: security
+    technology:
+      - react
+      - browser
+  severity: WARNING
+  languages:
+    - javascript
+    - typescript
+  patterns:
+    - pattern-either:
+        - pattern: $X.innerHTML = ...;
+        - pattern: $X.outerHTML = ...;
+    - pattern-not: $X.innerHTML = "...";
+    - pattern-not: $X.outerHTML = "...";
+    - pattern-not: $X.innerHTML = `...`;
+    - pattern-not: $X.outerHTML = `...`;
