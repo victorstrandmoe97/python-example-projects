@@ -1,3 +1,4 @@
+
 name: MCP Security (local MCP in CI)
 
 on:
@@ -31,15 +32,18 @@ jobs:
           python -m pip install fastmcp semgrep transformers accelerate safetensors
 
       # if your repo does NOT already have mcp_server.py, uncomment this:
-      # - name: Download mcp_server.py
-      #   run: |
-      #     curl -o mcp_server.py https://raw.githubusercontent.com/rymarinelli/MPC_OWASP_POC/main/mcp_server.py
-
-      - name: Start MCP server
+      - name: Download mcp_server.py
         run: |
-          sudo apt-get install -y tmux
-          tmux new -d -s mcp 'python mcp_server.py > mcp.log 2>&1'
+          curl -o mcp_server.py https://raw.githubusercontent.com/rymarinelli/MPC_OWASP_POC/main/mcp_server.py
+
+      - name: Start MCP server (in background)
+        run: |
+          # start your server on 0.0.0.0:8000
+          nohup python mcp_server.py > mcp.log 2>&1 &
+          # give it a moment to start
           sleep 7
+          echo "MCP server started."
+
       - name: Call MCP scan_repo
         run: |
           python - << 'PY'
@@ -124,6 +128,3 @@ jobs:
           cat mcp.log || true
           echo "---- mcp_scan.json ----"
           cat mcp_scan.json || true
-
-
-          
