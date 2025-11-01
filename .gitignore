@@ -94,7 +94,7 @@ ipython_config.py
 #   install all needed dependencies.
 #Pipfile.lock
 
-
+.DS_Store
 
 # Terraform state and cache
 *.tfstate
