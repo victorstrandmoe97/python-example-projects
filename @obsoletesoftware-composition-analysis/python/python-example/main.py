@@ -34,6 +34,26 @@ def download_and_extract_cpe_dictionary():
 
     context = ssl.create_default_context(cafile=certifi.where())
     with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file:
+# MCP-LMM-FIX (python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected): Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.
+size = 1000000
+    total_buffer_flush += len(entry)
+    if total_buffer_flush > buffer_size:
+        logging.info(f"💾 Writing {len(stream_buffer)} rows to BigQuery...")
+        job_config = bigquery.LoadJobConfig(
+            source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
+            write_disposition=bigquery.WriteDisposition.WRITE_APPEND,
+            schema=parse_cpe_dictionary()
+        )
+        job = client.load_table_from_iterable(stream_buffer, destination_table=staging_ref, job_config=job_config)
+        job.result()
+        logging.info(f"✅ Wrote {len(stream_buffer)} rows to BigQuery")
+        stream_buffer = []
+        total_buffer_flush = 0
+
+def main():
+    download_and_extract_cpe_dictionary()
+    for entry in extract_metadata(TEMP_JSONL_PATH):
+        stream_to_bigquery(
         out_file.write(response.read())
 
     logging.info("🗜️  Extracting CPE dictionary ZIP...")
