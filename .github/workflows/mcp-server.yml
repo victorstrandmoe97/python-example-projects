@@ -1,4 +1,3 @@
-
 name: MCP Security (local MCP in CI)
 
 on:
@@ -32,9 +31,9 @@ jobs:
           python -m pip install fastmcp semgrep transformers accelerate safetensors
 
       # if your repo does NOT already have mcp_server.py, uncomment this:
-      - name: Download mcp_server.py
-        run: |
-          curl -o mcp_server.py https://raw.githubusercontent.com/rymarinelli/MPC_OWASP_POC/main/mcp_server.py
+      # - name: Download mcp_server.py
+      #   run: |
+      #     curl -o mcp_server.py https://raw.githubusercontent.com/rymarinelli/MPC_OWASP_POC/main/mcp_server.py
 
       - name: Start MCP server (in background)
         run: |
