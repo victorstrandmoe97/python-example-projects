@@ -129,6 +129,38 @@ def download_transform_and_insert_staging_osv(flush_to_bigquery, stream_to_bigqu
         try:
             logging.info(f"📥 Downloading ZIP: {zip_download_url}")
             with urllib.request.urlopen(zip_download_url, context=context) as response:
+# MCP-LMM-FIX (python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected): Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.
+# Log memory usage
+        log_memory("Inserted {} rows".format(len(buffer)))
+        buffer.clear()
+
+    return stream
+
+def download_osv_index(url):
+    response = urllib.request.urlopen(url)
+    return response.read()
+
+def extract_osv_index_entries(index_content):
+    entries = []
+    for line in index_content.splitlines():
+        if line.startswith("{"):
+            entries.append(json.loads(line))
+    return entries
+
+def transform_osv_entries(entries):
+    return [transform_entry(entry) for entry in entries]
+
+def ingest_osv_entries(client, staging_ref, entries):
+    for entry in entries:
+        try:
+            ingest_to_main_table(client, entry)
+        except Exception as e:
+            logging.error(f"Error ingesting entry: {e}")
+            traceback.print_exc()
+
+def main():
+    client = bigquery.Client()
+    stage_table_id, st
                 zip_bytes = response.read()
             logging.info(f"✅ Downloaded in-memory: {ecosystem}/all.zip")
 
