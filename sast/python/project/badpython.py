@@ -8,7 +8,19 @@ user_input = input("Enter Python code: ")
 # Severity: WARNING
  VULN:  
 eval(user_input) + 
+# === MCP FIX START (python.lang.security.audit.md5-used-as-password.md5-used-as-password) ===
+# Severity: WARNING
+ VULN:  
+  + 
  
+ FIX:  
+hashed_password = hashlib.md5(password.encode()).hexdigest()
+
+The vulnerable code uses the MD5 hash function to hash the password. This is not considered secure for password storage due to the ease of cracking MD5 hashes. Instead, a secure password hashing function such as scrypt should be used.
+
+The minimal fix is to use the `hashlib.scrypt` function to hash the password instead of `hashlib.md5`. This ensures that the password is securely hashed using a strong password hashing function + 
+ 
+# === MCP FIX END ===
  FIX:  
 The vulnerable code snippet is:
 ```python
