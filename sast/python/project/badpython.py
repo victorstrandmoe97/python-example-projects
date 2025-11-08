@@ -8,7 +8,18 @@ user_input = input("Enter Python code: ")
 # Severity: WARNING
 eval(user_input)
 # → Suggested secure fix:
+# === MCP FIX START (python.lang.security.audit.md5-used-as-password.md5-used-as-password) ===
+# Severity: WARNING
 Corrected line:
+# → Suggested secure fix:
+```python
+import hashlib
+
+# Corrected code
+password = b"supersecretpassword"
+salt = b"salt"
+key = hashlib.scrypt(password, salt=salt, n=2**14, r=8, p=
+# === MCP FIX END ===
 # Replace eval(user_input) with a secure alternative
 # For example, using ast.literal_eval() to safely evaluate a literal structure
 import ast
