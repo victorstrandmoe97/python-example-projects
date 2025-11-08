@@ -8,7 +8,19 @@ user_input = input("Enter Python code: ")
 # Severity: WARNING
 eval(user_input)
 # → Suggested secure fix:
+# === MCP FIX START (python.lang.security.audit.md5-used-as-password.md5-used-as-password) ===
+# Severity: WARNING
 def eval_example():
+# → Suggested secure fix:
+import hashlib
+    password = "example_password"
+    hashed_password = hashlib.md5(password.encode()).hexdigest()
+    print(hashed_password)
+
+Suggested fix:
+def eval_example():
+    import
+# === MCP FIX END ===
     user_input = input("Enter a Python expression: ")
     eval(user_input)
 
