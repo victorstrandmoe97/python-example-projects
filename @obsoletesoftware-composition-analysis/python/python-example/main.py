@@ -33,7 +33,17 @@ def download_and_extract_cpe_dictionary():
     logging.info("📥 Downloading CPE dictionary...")
 
     context = ssl.create_default_context(cafile=certifi.where())
-    with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file:
+# === MCP FIX START (python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected) ===
+# Severity: WARNING
+ VULN:  
+    with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file: + 
+ 
+ FIX:  
+The vulnerable code uses the `urllib.request.urlopen` function to open a URL and download the content. The `NVD_CPE_XML_DOWNLOAD_URL` variable is a dynamic value that could be controlled by a malicious actor. This could allow them to read arbitrary files on the system, potentially leading to security vulnerabilities.
+
+To fix this vulnerability, consider using the `requests` library instead of `urllib.request.urlopen`. The `requests` library provides a more secure and modern way to handle HTTP + 
+ 
+# === MCP FIX END ===
         out_file.write(response.read())
 
     logging.info("🗜️  Extracting CPE dictionary ZIP...")
