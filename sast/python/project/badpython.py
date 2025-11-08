@@ -4,7 +4,21 @@ import hashlib
 
 # 🚨 Using eval on user input (code injection risk)
 user_input = input("Enter Python code: ")
+# === MCP FIX START (python.lang.security.audit.eval-detected.eval-detected) ===
+# Severity: WARNING
 eval(user_input)
+# → Suggested secure fix:
+def eval_example():
+    user_input = input("Enter a Python expression: ")
+    eval(user_input)
+
+
+# Example usage
+eval_example()
+```
+
+In this example, the `eval_example` function takes user input and
+# === MCP FIX END ===
 
 
 # 🚨 Insecure hash (MD5)
