@@ -128,7 +128,15 @@ def download_transform_and_insert_staging_osv(flush_to_bigquery, stream_to_bigqu
 
         try:
             logging.info(f"📥 Downloading ZIP: {zip_download_url}")
+# === MCP FIX START (python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected) ===
+# Severity: WARNING
             with urllib.request.urlopen(zip_download_url, context=context) as response:
+# → Suggested secure fix:
+Corrected line:
+            with urllib.request.urlopen(zip_download_url) as response:
+Explanation:
+The vulnerable line uses the 'context' parameter of urllib.request.urlopen, which allows a malicious actor to control the URL. By removing the 'context' parameter, the vulnerability is mitigated.
+# === MCP FIX END ===
                 zip_bytes = response.read()
             logging.info(f"✅ Downloaded in-memory: {ecosystem}/all.zip")
 
