@@ -33,7 +33,15 @@ def download_and_extract_cpe_dictionary():
     logging.info("📥 Downloading CPE dictionary...")
 
     context = ssl.create_default_context(cafile=certifi.where())
+# === MCP FIX START (python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected) ===
+# Severity: WARNING
     with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file:
+# → Suggested secure fix:
+Corrected line:
+    with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file:
+Explanation:
+    The vulnerable line uses a dynamic value (NVD_CPE_XML_DOWN
+# === MCP FIX END ===
         out_file.write(response.read())
 
     logging.info("🗜️  Extracting CPE dictionary ZIP...")
