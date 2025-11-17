@@ -1,0 +1,449 @@
+{
+  "commit_sha": "60ec0c8bc269a695ba902d6375e4d86a21b83bb9",
+  "timestamp": "2025-11-17T16:51:57.651255",
+  "stats": {
+    "total": 4,
+    "added": 0,
+    "removed": 0,
+    "persisted": 4
+  },
+  "diff": {
+    "added": [],
+    "removed": [],
+    "persisted": [
+      "f40cf0cbfc9ac0802c9d66d06ef64c9bc23d5f8c",
+      "41e00a532653e7c7c38d1dc346108850ffa5d4ce",
+      "5e9fdf62296646cb35e99cddf8eb39985cd61bbc",
+      "d5b7c0c4735919912cfa40c1c4e57c80a97c5ab5"
+    ]
+  },
+  "vulns": {
+    "f40cf0cbfc9ac0802c9d66d06ef64c9bc23d5f8c": {
+      "uid": "f40cf0cbfc9ac0802c9d66d06ef64c9bc23d5f8c",
+      "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "file": "/tmp/mcp_semgrep_lvj2gnpz/repo/@obsoletesoftware-composition-analysis/python/python-example/main.py",
+      "code": "    with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file:",
+      "severity": "WARNING",
+      "metadata": {
+        "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+        "file": "/tmp/mcp_semgrep_lvj2gnpz/repo/@obsoletesoftware-composition-analysis/python/python-example/main.py",
+        "code_excerpt": "    with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file:",
+        "severity": "WARNING",
+        "raw": {
+          "check_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+          "end": {
+            "col": 75,
+            "line": 38,
+            "offset": 1326
+          },
+          "extra": {
+            "engine_kind": "OSS",
+            "fingerprint": "72891f090e96d3c9f820e3b4e1d548ec0964a70f20cb3ebb57e5b749b17427aabba0366408e3697cb65d29d01b424007d59c3e3634925952022cfcd18d1538ec_0",
+            "is_ignored": false,
+            "lines": "    with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file:",
+            "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+            "metadata": {
+              "asvs": {
+                "control_id": "5.2.4 Dynamic Code Execution Features",
+                "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+                "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+                "version": "4"
+              },
+              "bandit-code": "B310",
+              "category": "security",
+              "confidence": "LOW",
+              "cwe": [
+                "CWE-939: Improper Authorization in Handler for Custom URL Scheme"
+              ],
+              "impact": "LOW",
+              "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+              "likelihood": "LOW",
+              "owasp": "A01:2017 - Injection",
+              "references": [
+                "https://cwe.mitre.org/data/definitions/939.html"
+              ],
+              "semgrep.dev": {
+                "rule": {
+                  "origin": "community",
+                  "r_id": 9634,
+                  "rule_id": "8GUj22",
+                  "rv_id": 946340,
+                  "url": "https://semgrep.dev/playground/r/w8TKJbO/python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+                  "version_id": "w8TKJbO"
+                }
+              },
+              "shortlink": "https://sg.run/dKZZ",
+              "source": "https://semgrep.dev/r/python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+              "source-rule-url": "https://github.com/PyCQA/bandit/blob/b1411bfb43795d3ffd268bef17a839dee954c2b1/bandit/blacklists/calls.py#L163",
+              "subcategory": [
+                "audit"
+              ],
+              "technology": [
+                "python"
+              ],
+              "vulnerability_class": [
+                "Improper Authorization"
+              ]
+            },
+            "metavars": {},
+            "severity": "WARNING",
+            "validation_state": "NO_VALIDATOR"
+          },
+          "path": "/tmp/mcp_semgrep_lvj2gnpz/repo/@obsoletesoftware-composition-analysis/python/python-example/main.py",
+          "start": {
+            "col": 10,
+            "line": 38,
+            "offset": 1261
+          }
+        }
+      }
+    },
+    "41e00a532653e7c7c38d1dc346108850ffa5d4ce": {
+      "uid": "41e00a532653e7c7c38d1dc346108850ffa5d4ce",
+      "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+      "file": "/tmp/mcp_semgrep_lvj2gnpz/repo/sast/python/project/badpython.py",
+      "code": "eval(user_input)",
+      "severity": "WARNING",
+      "metadata": {
+        "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+        "file": "/tmp/mcp_semgrep_lvj2gnpz/repo/sast/python/project/badpython.py",
+        "code_excerpt": "eval(user_input)",
+        "severity": "WARNING",
+        "raw": {
+          "check_id": "python.lang.security.audit.eval-detected.eval-detected",
+          "end": {
+            "col": 17,
+            "line": 9,
+            "offset": 252
+          },
+          "extra": {
+            "engine_kind": "OSS",
+            "fingerprint": "796009b4725e350379b6bc6ab9173024e93ff82e3af87c00cb064ce9d00c0c08a1ae7fb3414ee94d0d4b0ef85acf643dc67125bffab73dc1ee50cdfb4793dd04_0",
+            "is_ignored": false,
+            "lines": "eval(user_input)",
+            "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+            "metadata": {
+              "asvs": {
+                "control_id": "5.2.4 Dyanmic Code Execution Features",
+                "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+                "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+                "version": "4"
+              },
+              "category": "security",
+              "confidence": "LOW",
+              "cwe": [
+                "CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"
+              ],
+              "impact": "HIGH",
+              "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+              "likelihood": "LOW",
+              "owasp": [
+                "A03:2021 - Injection"
+              ],
+              "references": [
+                "https://owasp.org/Top10/A03_2021-Injection"
+              ],
+              "semgrep.dev": {
+                "rule": {
+                  "origin": "community",
+                  "r_id": 9635,
+                  "rule_id": "gxU149",
+                  "rv_id": 946341,
+                  "url": "https://semgrep.dev/playground/r/xyTqnr7/python.lang.security.audit.eval-detected.eval-detected",
+                  "version_id": "xyTqnr7"
+                }
+              },
+              "shortlink": "https://sg.run/ZvrD",
+              "source": "https://semgrep.dev/r/python.lang.security.audit.eval-detected.eval-detected",
+              "source-rule-url": "https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b307-eval",
+              "subcategory": [
+                "audit"
+              ],
+              "technology": [
+                "python"
+              ],
+              "vulnerability_class": [
+                "Code Injection"
+              ]
+            },
+            "metavars": {},
+            "severity": "WARNING",
+            "validation_state": "NO_VALIDATOR"
+          },
+          "path": "/tmp/mcp_semgrep_lvj2gnpz/repo/sast/python/project/badpython.py",
+          "start": {
+            "col": 1,
+            "line": 9,
+            "offset": 236
+          }
+        }
+      }
+    },
+    "d5b7c0c4735919912cfa40c1c4e57c80a97c5ab5": {
+      "uid": "d5b7c0c4735919912cfa40c1c4e57c80a97c5ab5",
+      "rule_id": "python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+      "file": "/tmp/mcp_semgrep_lvj2gnpz/repo/sast/python/project/badpython.py",
+      "code": "password_hash = hashlib.md5(\"mypassword\".encode()).hexdigest()()",
+      "severity": "WARNING",
+      "metadata": {
+        "rule_id": "python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+        "file": "/tmp/mcp_semgrep_lvj2gnpz/repo/sast/python/project/badpython.py",
+        "code_excerpt": "password_hash = hashlib.md5(\"mypassword\".encode()).hexdigest()()",
+        "severity": "WARNING",
+        "raw": {
+          "check_id": "python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+          "end": {
+            "col": 65,
+            "line": 28,
+            "offset": 760
+          },
+          "extra": {
+            "dataflow_trace": {
+              "intermediate_vars": [],
+              "taint_sink": [
+                "CliLoc",
+                [
+                  {
+                    "end": {
+                      "col": 65,
+                      "line": 28,
+                      "offset": 760
+                    },
+                    "path": "/tmp/mcp_semgrep_lvj2gnpz/repo/sast/python/project/badpython.py",
+                    "start": {
+                      "col": 17,
+                      "line": 28,
+                      "offset": 712
+                    }
+                  },
+                  "hashlib.md5(\"mypassword\".encode()).hexdigest()()"
+                ]
+              ],
+              "taint_source": [
+                "CliLoc",
+                [
+                  {
+                    "end": {
+                      "col": 28,
+                      "line": 28,
+                      "offset": 723
+                    },
+                    "path": "/tmp/mcp_semgrep_lvj2gnpz/repo/sast/python/project/badpython.py",
+                    "start": {
+                      "col": 17,
+                      "line": 28,
+                      "offset": 712
+                    }
+                  },
+                  "hashlib.md5"
+                ]
+              ]
+            },
+            "engine_kind": "OSS",
+            "fingerprint": "e8136a3c7c110d7c91afd4748676bc3f8cdefd84b519ba34e0cfc260ecb72c710f3e4fef49223dd77710f9ffecd2c22f8dd5f657b53418a64ac8d15a473d1b39_0",
+            "is_ignored": false,
+            "lines": "password_hash = hashlib.md5(\"mypassword\".encode()).hexdigest()()",
+            "message": "It looks like MD5 is used as a password hash. MD5 is not considered a secure password hash because it can be cracked by an attacker in a short amount of time. Use a suitable password hashing function such as scrypt. You can use `hashlib.scrypt`.",
+            "metadata": {
+              "category": "security",
+              "confidence": "MEDIUM",
+              "cwe": [
+                "CWE-327: Use of a Broken or Risky Cryptographic Algorithm"
+              ],
+              "impact": "LOW",
+              "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+              "likelihood": "HIGH",
+              "owasp": [
+                "A03:2017 - Sensitive Data Exposure",
+                "A02:2021 - Cryptographic Failures"
+              ],
+              "references": [
+                "https://tools.ietf.org/html/rfc6151",
+                "https://crypto.stackexchange.com/questions/44151/how-does-the-flame-malware-take-advantage-of-md5-collision",
+                "https://pycryptodome.readthedocs.io/en/latest/src/hash/sha3_256.html",
+                "https://security.stackexchange.com/questions/211/how-to-securely-hash-passwords",
+                "https://github.com/returntocorp/semgrep-rules/issues/1609",
+                "https://docs.python.org/3/library/hashlib.html#hashlib.scrypt"
+              ],
+              "semgrep.dev": {
+                "rule": {
+                  "origin": "community",
+                  "r_id": 14703,
+                  "rule_id": "6JU1w1",
+                  "rv_id": 946368,
+                  "url": "https://semgrep.dev/playground/r/l4Tx9Rp/python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+                  "version_id": "l4Tx9Rp"
+                }
+              },
+              "shortlink": "https://sg.run/5DwD",
+              "source": "https://semgrep.dev/r/python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+              "subcategory": [
+                "vuln"
+              ],
+              "technology": [
+                "pycryptodome",
+                "hashlib",
+                "md5"
+              ],
+              "vulnerability_class": [
+                "Cryptographic Issues"
+              ]
+            },
+            "metavars": {
+              "$1": {
+                "abstract_content": "hashlib.md5(\"mypassword\".encode()).hexdigest()",
+                "end": {
+                  "col": 47,
+                  "line": 1,
+                  "offset": 46
+                },
+                "start": {
+                  "col": 1,
+                  "line": 1,
+                  "offset": 0
+                }
+              },
+              "$FUNCTION": {
+                "abstract_content": "hashlib.md5(\"mypassword\".encode()).hexdigest()",
+                "end": {
+                  "col": 63,
+                  "line": 28,
+                  "offset": 758
+                },
+                "start": {
+                  "col": 17,
+                  "line": 28,
+                  "offset": 712
+                }
+              }
+            },
+            "severity": "WARNING",
+            "validation_state": "NO_VALIDATOR"
+          },
+          "path": "/tmp/mcp_semgrep_lvj2gnpz/repo/sast/python/project/badpython.py",
+          "start": {
+            "col": 17,
+            "line": 28,
+            "offset": 712
+          }
+        }
+      }
+    },
+    "5e9fdf62296646cb35e99cddf8eb39985cd61bbc": {
+      "uid": "5e9fdf62296646cb35e99cddf8eb39985cd61bbc",
+      "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "file": "/tmp/mcp_semgrep_lvj2gnpz/repo/sast/python/project/main.py",
+      "code": "            with urllib.request.urlopen(zip_download_url, context=context) as response:",
+      "severity": "WARNING",
+      "metadata": {
+        "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+        "file": "/tmp/mcp_semgrep_lvj2gnpz/repo/sast/python/project/main.py",
+        "code_excerpt": "            with urllib.request.urlopen(zip_download_url, context=context) as response:",
+        "severity": "WARNING",
+        "raw": {
+          "check_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+          "end": {
+            "col": 75,
+            "line": 131,
+            "offset": 4891
+          },
+          "extra": {
+            "engine_kind": "OSS",
+            "fingerprint": "79441765391a9c8a3ee3ad2fa9b5a604dd80624ca3316560eaff9c9ca2b91581f790b89ccc9275cf22c36652f5a12302418e89ef3fcf151b474c2e07f4a3bc48_0",
+            "is_ignored": false,
+            "lines": "            with urllib.request.urlopen(zip_download_url, context=context) as response:",
+            "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+            "metadata": {
+              "asvs": {
+                "control_id": "5.2.4 Dynamic Code Execution Features",
+                "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+                "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+                "version": "4"
+              },
+              "bandit-code": "B310",
+              "category": "security",
+              "confidence": "LOW",
+              "cwe": [
+                "CWE-939: Improper Authorization in Handler for Custom URL Scheme"
+              ],
+              "impact": "LOW",
+              "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+              "likelihood": "LOW",
+              "owasp": "A01:2017 - Injection",
+              "references": [
+                "https://cwe.mitre.org/data/definitions/939.html"
+              ],
+              "semgrep.dev": {
+                "rule": {
+                  "origin": "community",
+                  "r_id": 9634,
+                  "rule_id": "8GUj22",
+                  "rv_id": 946340,
+                  "url": "https://semgrep.dev/playground/r/w8TKJbO/python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+                  "version_id": "w8TKJbO"
+                }
+              },
+              "shortlink": "https://sg.run/dKZZ",
+              "source": "https://semgrep.dev/r/python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+              "source-rule-url": "https://github.com/PyCQA/bandit/blob/b1411bfb43795d3ffd268bef17a839dee954c2b1/bandit/blacklists/calls.py#L163",
+              "subcategory": [
+                "audit"
+              ],
+              "technology": [
+                "python"
+              ],
+              "vulnerability_class": [
+                "Improper Authorization"
+              ]
+            },
+            "metavars": {},
+            "severity": "WARNING",
+            "validation_state": "NO_VALIDATOR"
+          },
+          "path": "/tmp/mcp_semgrep_lvj2gnpz/repo/sast/python/project/main.py",
+          "start": {
+            "col": 18,
+            "line": 131,
+            "offset": 4834
+          }
+        }
+      }
+    }
+  },
+  "topics": {
+    "f40cf0cbfc9ac0802c9d66d06ef64c9bc23d5f8c": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "41e00a532653e7c7c38d1dc346108850ffa5d4ce": "python.lang.security.audit.eval-detected.eval-detected",
+    "d5b7c0c4735919912cfa40c1c4e57c80a97c5ab5": "python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+    "5e9fdf62296646cb35e99cddf8eb39985cd61bbc": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected"
+  },
+  "time_to_fix_store": {
+    "f40cf0cbfc9ac0802c9d66d06ef64c9bc23d5f8c": {
+      "first_seen_sha": "a75ff2620d0eaf410a57594b19c0d8b4177ff0a3",
+      "first_seen_at": "2025-11-17T16:50:15.601528",
+      "last_seen_sha": "60ec0c8bc269a695ba902d6375e4d86a21b83bb9",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "41e00a532653e7c7c38d1dc346108850ffa5d4ce": {
+      "first_seen_sha": "a75ff2620d0eaf410a57594b19c0d8b4177ff0a3",
+      "first_seen_at": "2025-11-17T16:50:15.601528",
+      "last_seen_sha": "60ec0c8bc269a695ba902d6375e4d86a21b83bb9",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "5e9fdf62296646cb35e99cddf8eb39985cd61bbc": {
+      "first_seen_sha": "a75ff2620d0eaf410a57594b19c0d8b4177ff0a3",
+      "first_seen_at": "2025-11-17T16:50:15.601528",
+      "last_seen_sha": "60ec0c8bc269a695ba902d6375e4d86a21b83bb9",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "d5b7c0c4735919912cfa40c1c4e57c80a97c5ab5": {
+      "first_seen_sha": "a75ff2620d0eaf410a57594b19c0d8b4177ff0a3",
+      "first_seen_at": "2025-11-17T16:50:15.601528",
+      "last_seen_sha": "60ec0c8bc269a695ba902d6375e4d86a21b83bb9",
+      "resolved_sha": null,
+      "resolved_at": null
+    }
+  }
+}
