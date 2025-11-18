@@ -1,0 +1,135 @@
+{
+  "commit_sha": "9c7f45c716394265ce26a719c041f2d1c7268f7c",
+  "timestamp": "2025-11-18T06:48:43.411829",
+  "stats": {
+    "total": 4,
+    "added": 0,
+    "removed": 0,
+    "persisted": 4
+  },
+  "diff": {
+    "added": [],
+    "removed": [],
+    "persisted": [
+      "56c2d7714f612f1f162e13f8018c1413e3fdcc52",
+      "3a2838863b4bdf93618cb9fc332980fb463b5e36",
+      "a5283012402e80182b978bb39cd5c70dcd5d2de5",
+      "5d2b8f8413869d353cda7f4a2a949e3b31a8fb84"
+    ]
+  },
+  "vulns": {
+    "56c2d7714f612f1f162e13f8018c1413e3fdcc52": {
+      "uid": "56c2d7714f612f1f162e13f8018c1413e3fdcc52",
+      "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "file": "/tmp/mcp_semgrep_d00nkyb4/repo/@obsoletesoftware-composition-analysis/python/python-example/main.py",
+      "code": "    with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file:",
+      "severity": "WARNING",
+      "semgrep_fingerprint": "21d19f0353d3f1875f99467cd6a98fedb89960837b47cbb7da3541c516cbe37fc2f994b3035a626600f5dc051e9a33d78b68ad746581f0f60290f6014cb5fd89_0",
+      "asvs": {
+        "control_id": "5.2.4 Dynamic Code Execution Features",
+        "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+        "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+        "version": "4"
+      },
+      "owasp": "A01:2017 - Injection",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/939.html"
+      ]
+    },
+    "a5283012402e80182b978bb39cd5c70dcd5d2de5": {
+      "uid": "a5283012402e80182b978bb39cd5c70dcd5d2de5",
+      "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+      "file": "/tmp/mcp_semgrep_d00nkyb4/repo/sast/python/project/badpython.py",
+      "code": "eval(user_input)",
+      "severity": "WARNING",
+      "semgrep_fingerprint": "48b1e56c3c73f76fe2f4db14699367d35987fa2a864c588c6e19456dafd94b1a3b1861513be941e031dfcca8c7b70f48094539d997a935c77d5bb2128303d4a4_0",
+      "asvs": {
+        "control_id": "5.2.4 Dyanmic Code Execution Features",
+        "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+        "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+        "version": "4"
+      },
+      "owasp": [
+        "A03:2021 - Injection"
+      ],
+      "references": [
+        "https://owasp.org/Top10/A03_2021-Injection"
+      ]
+    },
+    "3a2838863b4bdf93618cb9fc332980fb463b5e36": {
+      "uid": "3a2838863b4bdf93618cb9fc332980fb463b5e36",
+      "rule_id": "python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+      "file": "/tmp/mcp_semgrep_d00nkyb4/repo/sast/python/project/badpython.py",
+      "code": "password_hash = hashlib.md5(\"mypassword\".encode()).hexdigest()()",
+      "severity": "WARNING",
+      "semgrep_fingerprint": "a939dcc245933a4f739573665c190f64ed1017eb8343607d64abc732f1456a79ae30baa02de888c5a49b3c56235b91ce420547cad1701e4946251810674b7ac9_0",
+      "asvs": null,
+      "owasp": [
+        "A03:2017 - Sensitive Data Exposure",
+        "A02:2021 - Cryptographic Failures"
+      ],
+      "references": [
+        "https://tools.ietf.org/html/rfc6151",
+        "https://crypto.stackexchange.com/questions/44151/how-does-the-flame-malware-take-advantage-of-md5-collision",
+        "https://pycryptodome.readthedocs.io/en/latest/src/hash/sha3_256.html",
+        "https://security.stackexchange.com/questions/211/how-to-securely-hash-passwords",
+        "https://github.com/returntocorp/semgrep-rules/issues/1609",
+        "https://docs.python.org/3/library/hashlib.html#hashlib.scrypt"
+      ]
+    },
+    "5d2b8f8413869d353cda7f4a2a949e3b31a8fb84": {
+      "uid": "5d2b8f8413869d353cda7f4a2a949e3b31a8fb84",
+      "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "file": "/tmp/mcp_semgrep_d00nkyb4/repo/sast/python/project/main.py",
+      "code": "            with urllib.request.urlopen(zip_download_url, context=context) as response:",
+      "severity": "WARNING",
+      "semgrep_fingerprint": "d5065f0317b9ac9921c8d5d7d16662d928c92f3c4976934ed347d409fec81fe5545f4b1c77132e1b43e7749364927c2588f7964839b0bbf4580a3c1518c7705a_0",
+      "asvs": {
+        "control_id": "5.2.4 Dynamic Code Execution Features",
+        "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+        "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+        "version": "4"
+      },
+      "owasp": "A01:2017 - Injection",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/939.html"
+      ]
+    }
+  },
+  "topics": {
+    "56c2d7714f612f1f162e13f8018c1413e3fdcc52": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "a5283012402e80182b978bb39cd5c70dcd5d2de5": "python.lang.security.audit.eval-detected.eval-detected",
+    "3a2838863b4bdf93618cb9fc332980fb463b5e36": "python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+    "5d2b8f8413869d353cda7f4a2a949e3b31a8fb84": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected"
+  },
+  "time_to_fix_store": {
+    "56c2d7714f612f1f162e13f8018c1413e3fdcc52": {
+      "first_seen_sha": "4c5684242c648c5ac766acd10689b4d721fa0d5b",
+      "first_seen_at": "2025-11-18T06:45:12.335315",
+      "last_seen_sha": "9c7f45c716394265ce26a719c041f2d1c7268f7c",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "3a2838863b4bdf93618cb9fc332980fb463b5e36": {
+      "first_seen_sha": "4c5684242c648c5ac766acd10689b4d721fa0d5b",
+      "first_seen_at": "2025-11-18T06:45:12.335315",
+      "last_seen_sha": "9c7f45c716394265ce26a719c041f2d1c7268f7c",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "a5283012402e80182b978bb39cd5c70dcd5d2de5": {
+      "first_seen_sha": "4c5684242c648c5ac766acd10689b4d721fa0d5b",
+      "first_seen_at": "2025-11-18T06:45:12.335315",
+      "last_seen_sha": "9c7f45c716394265ce26a719c041f2d1c7268f7c",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "5d2b8f8413869d353cda7f4a2a949e3b31a8fb84": {
+      "first_seen_sha": "4c5684242c648c5ac766acd10689b4d721fa0d5b",
+      "first_seen_at": "2025-11-18T06:45:12.335315",
+      "last_seen_sha": "9c7f45c716394265ce26a719c041f2d1c7268f7c",
+      "resolved_sha": null,
+      "resolved_at": null
+    }
+  }
+}
