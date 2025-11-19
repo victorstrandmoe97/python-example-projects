@@ -1,0 +1,139 @@
+{
+  "commit_sha": "e19f4cc5f6f1c5abdb210b59bc54ba9b28069c13",
+  "timestamp": "2025-11-19T14:30:42.660582",
+  "stats": {
+    "total": 4,
+    "added": 0,
+    "removed": 0,
+    "persisted": 4
+  },
+  "diff": {
+    "added": [],
+    "removed": [],
+    "persisted": [
+      "0cba331df48aa4a9a0a22a0fc16ded80468045224237828a155c9ae75a5cbddfbfc1b23d8c70f5893fe6bbe331377f4f964baa3925c04b4a42a778b14a1d3559_0",
+      "080c21985c3d9872033a9e07d02410d0156e92821af45afc47a787a764a4bbd5f0c4525d82130b9c18a4a090d7878a05d4b8a9be54d044e28b26ec07a0e8b435_0",
+      "01823e61e64c2093cee1dbf1055699b5aa00aa1b20831cd58f850233b73ebf683de6804e986f4c68792cbb6ed3ed02d75ad8ecdb8d92d6144d2992baea620158_0",
+      "3ec858c5e079098e319b2573f556d13c24ac951cce2ee9ac6e7bf80717acb9d512970f6755ca08e3f9852a015e16848838a4248582b0bcf63798be64f9d210cd_0"
+    ]
+  },
+  "vulns": {
+    "01823e61e64c2093cee1dbf1055699b5aa00aa1b20831cd58f850233b73ebf683de6804e986f4c68792cbb6ed3ed02d75ad8ecdb8d92d6144d2992baea620158_0": {
+      "uid": "01823e61e64c2093cee1dbf1055699b5aa00aa1b20831cd58f850233b73ebf683de6804e986f4c68792cbb6ed3ed02d75ad8ecdb8d92d6144d2992baea620158_0",
+      "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "file": "/tmp/mcp_semgrep_l3r5bv13/repo/@obsoletesoftware-composition-analysis/python/python-example/main.py",
+      "code": "    with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file:",
+      "severity": "WARNING",
+      "semgrep_fingerprint": "01823e61e64c2093cee1dbf1055699b5aa00aa1b20831cd58f850233b73ebf683de6804e986f4c68792cbb6ed3ed02d75ad8ecdb8d92d6144d2992baea620158_0",
+      "asvs": {
+        "control_id": "5.2.4 Dynamic Code Execution Features",
+        "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+        "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+        "version": "4"
+      },
+      "owasp": "A01:2017 - Injection",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/939.html"
+      ]
+    },
+    "0cba331df48aa4a9a0a22a0fc16ded80468045224237828a155c9ae75a5cbddfbfc1b23d8c70f5893fe6bbe331377f4f964baa3925c04b4a42a778b14a1d3559_0": {
+      "uid": "0cba331df48aa4a9a0a22a0fc16ded80468045224237828a155c9ae75a5cbddfbfc1b23d8c70f5893fe6bbe331377f4f964baa3925c04b4a42a778b14a1d3559_0",
+      "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+      "file": "/tmp/mcp_semgrep_l3r5bv13/repo/sast/python/project/badpython.py",
+      "code": "eval(user_input)",
+      "severity": "WARNING",
+      "semgrep_fingerprint": "0cba331df48aa4a9a0a22a0fc16ded80468045224237828a155c9ae75a5cbddfbfc1b23d8c70f5893fe6bbe331377f4f964baa3925c04b4a42a778b14a1d3559_0",
+      "asvs": {
+        "control_id": "5.2.4 Dyanmic Code Execution Features",
+        "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+        "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+        "version": "4"
+      },
+      "owasp": [
+        "A03:2021 - Injection"
+      ],
+      "references": [
+        "https://owasp.org/Top10/A03_2021-Injection"
+      ]
+    },
+    "3ec858c5e079098e319b2573f556d13c24ac951cce2ee9ac6e7bf80717acb9d512970f6755ca08e3f9852a015e16848838a4248582b0bcf63798be64f9d210cd_0": {
+      "uid": "3ec858c5e079098e319b2573f556d13c24ac951cce2ee9ac6e7bf80717acb9d512970f6755ca08e3f9852a015e16848838a4248582b0bcf63798be64f9d210cd_0",
+      "rule_id": "python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+      "file": "/tmp/mcp_semgrep_l3r5bv13/repo/sast/python/project/badpython.py",
+      "code": "password_hash = hashlib.md5(\"mypassword\".encode()).hexdigest()()",
+      "severity": "WARNING",
+      "semgrep_fingerprint": "3ec858c5e079098e319b2573f556d13c24ac951cce2ee9ac6e7bf80717acb9d512970f6755ca08e3f9852a015e16848838a4248582b0bcf63798be64f9d210cd_0",
+      "asvs": null,
+      "owasp": [
+        "A03:2017 - Sensitive Data Exposure",
+        "A02:2021 - Cryptographic Failures"
+      ],
+      "references": [
+        "https://tools.ietf.org/html/rfc6151",
+        "https://crypto.stackexchange.com/questions/44151/how-does-the-flame-malware-take-advantage-of-md5-collision",
+        "https://pycryptodome.readthedocs.io/en/latest/src/hash/sha3_256.html",
+        "https://security.stackexchange.com/questions/211/how-to-securely-hash-passwords",
+        "https://github.com/returntocorp/semgrep-rules/issues/1609",
+        "https://docs.python.org/3/library/hashlib.html#hashlib.scrypt"
+      ]
+    },
+    "080c21985c3d9872033a9e07d02410d0156e92821af45afc47a787a764a4bbd5f0c4525d82130b9c18a4a090d7878a05d4b8a9be54d044e28b26ec07a0e8b435_0": {
+      "uid": "080c21985c3d9872033a9e07d02410d0156e92821af45afc47a787a764a4bbd5f0c4525d82130b9c18a4a090d7878a05d4b8a9be54d044e28b26ec07a0e8b435_0",
+      "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "file": "/tmp/mcp_semgrep_l3r5bv13/repo/sast/python/project/main.py",
+      "code": "            with urllib.request.urlopen(zip_download_url, context=context) as response:",
+      "severity": "WARNING",
+      "semgrep_fingerprint": "080c21985c3d9872033a9e07d02410d0156e92821af45afc47a787a764a4bbd5f0c4525d82130b9c18a4a090d7878a05d4b8a9be54d044e28b26ec07a0e8b435_0",
+      "asvs": {
+        "control_id": "5.2.4 Dynamic Code Execution Features",
+        "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+        "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+        "version": "4"
+      },
+      "owasp": "A01:2017 - Injection",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/939.html"
+      ]
+    }
+  },
+  "topics": {
+    "01823e61e64c2093cee1dbf1055699b5aa00aa1b20831cd58f850233b73ebf683de6804e986f4c68792cbb6ed3ed02d75ad8ecdb8d92d6144d2992baea620158_0": "misc",
+    "0cba331df48aa4a9a0a22a0fc16ded80468045224237828a155c9ae75a5cbddfbfc1b23d8c70f5893fe6bbe331377f4f964baa3925c04b4a42a778b14a1d3559_0": "misc",
+    "3ec858c5e079098e319b2573f556d13c24ac951cce2ee9ac6e7bf80717acb9d512970f6755ca08e3f9852a015e16848838a4248582b0bcf63798be64f9d210cd_0": "misc",
+    "080c21985c3d9872033a9e07d02410d0156e92821af45afc47a787a764a4bbd5f0c4525d82130b9c18a4a090d7878a05d4b8a9be54d044e28b26ec07a0e8b435_0": "misc"
+  },
+  "topic_drift": {
+    "jaccard": 0.0,
+    "kl_divergence": 0.0
+  },
+  "time_to_fix_store": {
+    "0cba331df48aa4a9a0a22a0fc16ded80468045224237828a155c9ae75a5cbddfbfc1b23d8c70f5893fe6bbe331377f4f964baa3925c04b4a42a778b14a1d3559_0": {
+      "first_seen_sha": "33fd5db50614acb1ffcaf72e98241b20820f5d00",
+      "first_seen_at": "2025-11-19T14:28:46.235490",
+      "last_seen_sha": "e19f4cc5f6f1c5abdb210b59bc54ba9b28069c13",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "080c21985c3d9872033a9e07d02410d0156e92821af45afc47a787a764a4bbd5f0c4525d82130b9c18a4a090d7878a05d4b8a9be54d044e28b26ec07a0e8b435_0": {
+      "first_seen_sha": "33fd5db50614acb1ffcaf72e98241b20820f5d00",
+      "first_seen_at": "2025-11-19T14:28:46.235490",
+      "last_seen_sha": "e19f4cc5f6f1c5abdb210b59bc54ba9b28069c13",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "01823e61e64c2093cee1dbf1055699b5aa00aa1b20831cd58f850233b73ebf683de6804e986f4c68792cbb6ed3ed02d75ad8ecdb8d92d6144d2992baea620158_0": {
+      "first_seen_sha": "33fd5db50614acb1ffcaf72e98241b20820f5d00",
+      "first_seen_at": "2025-11-19T14:28:46.235490",
+      "last_seen_sha": "e19f4cc5f6f1c5abdb210b59bc54ba9b28069c13",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "3ec858c5e079098e319b2573f556d13c24ac951cce2ee9ac6e7bf80717acb9d512970f6755ca08e3f9852a015e16848838a4248582b0bcf63798be64f9d210cd_0": {
+      "first_seen_sha": "33fd5db50614acb1ffcaf72e98241b20820f5d00",
+      "first_seen_at": "2025-11-19T14:28:46.235490",
+      "last_seen_sha": "e19f4cc5f6f1c5abdb210b59bc54ba9b28069c13",
+      "resolved_sha": null,
+      "resolved_at": null
+    }
+  }
+}
