@@ -1,0 +1,4 @@
+{
+  "label": "unknown",
+  "raw_output": "critic_error: Repo id must be in the form 'repo_name' or 'namespace/repo_name': './calibration/tiny_security_critic'. Use `repo_type` argument if needed."
+}
