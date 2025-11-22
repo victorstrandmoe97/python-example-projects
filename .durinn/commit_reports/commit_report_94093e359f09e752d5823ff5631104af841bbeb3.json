@@ -1,0 +1,249 @@
+{
+  "commit_sha": "94093e359f09e752d5823ff5631104af841bbeb3",
+  "timestamp": "2025-11-22T22:44:21.065604",
+  "stats": {
+    "total": 5,
+    "added": 0,
+    "removed": 0,
+    "persisted": 5
+  },
+  "diff": {
+    "added": [],
+    "removed": [],
+    "persisted": [
+      "dc595d5d930405488630588923ae2966a1c8d430cea39733327fa7a60d1915aaeb3fb1719399847681f472bc493030dc7c9a21fd310c720e90e0e1685868bfee_0",
+      "97e739c7d38192232a124ffaab9c4a7e93731d05eb4130d75cb6330d393d8852d0bb8ae04c6b3f9a0a57f2b7c77b920debf9a1f19196886a8e65418e1fd81237_1",
+      "93453383349f7ba51d52235395b3350df059a25a3a77c19cb963e1bb82398f468b63838b204b0c509af08dd3e1acfdc782dedb39c6233955728d572a63a03519_0",
+      "97e739c7d38192232a124ffaab9c4a7e93731d05eb4130d75cb6330d393d8852d0bb8ae04c6b3f9a0a57f2b7c77b920debf9a1f19196886a8e65418e1fd81237_0",
+      "a3a9c36266d43a070af2a3909f5dfdc14ce4b0964720f4fb1afaffe638aad7f7f44dcea2ba2819eb42534991735b5841ef477b8b5be401a0519e02ada0dbc7e3_0"
+    ]
+  },
+  "vulns": {
+    "97e739c7d38192232a124ffaab9c4a7e93731d05eb4130d75cb6330d393d8852d0bb8ae04c6b3f9a0a57f2b7c77b920debf9a1f19196886a8e65418e1fd81237_0": {
+      "uid": "97e739c7d38192232a124ffaab9c4a7e93731d05eb4130d75cb6330d393d8852d0bb8ae04c6b3f9a0a57f2b7c77b920debf9a1f19196886a8e65418e1fd81237_0",
+      "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "file": "/tmp/mcp_semgrep_q5sz1q33/repo/@obsoletesoftware-composition-analysis/python/python-example/main.py",
+      "code": "    with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file:",
+      "severity": "WARNING",
+      "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+      "semgrep_fingerprint": "97e739c7d38192232a124ffaab9c4a7e93731d05eb4130d75cb6330d393d8852d0bb8ae04c6b3f9a0a57f2b7c77b920debf9a1f19196886a8e65418e1fd81237_0",
+      "asvs": {
+        "control_id": "5.2.4 Dynamic Code Execution Features",
+        "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+        "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+        "version": "4"
+      },
+      "owasp": "A01:2017 - Injection",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/939.html"
+      ]
+    },
+    "97e739c7d38192232a124ffaab9c4a7e93731d05eb4130d75cb6330d393d8852d0bb8ae04c6b3f9a0a57f2b7c77b920debf9a1f19196886a8e65418e1fd81237_1": {
+      "uid": "97e739c7d38192232a124ffaab9c4a7e93731d05eb4130d75cb6330d393d8852d0bb8ae04c6b3f9a0a57f2b7c77b920debf9a1f19196886a8e65418e1fd81237_1",
+      "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "file": "/tmp/mcp_semgrep_q5sz1q33/repo/@obsoletesoftware-composition-analysis/python/python-example/main.py",
+      "code": "    with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file:",
+      "severity": "WARNING",
+      "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+      "semgrep_fingerprint": "97e739c7d38192232a124ffaab9c4a7e93731d05eb4130d75cb6330d393d8852d0bb8ae04c6b3f9a0a57f2b7c77b920debf9a1f19196886a8e65418e1fd81237_1",
+      "asvs": {
+        "control_id": "5.2.4 Dynamic Code Execution Features",
+        "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+        "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+        "version": "4"
+      },
+      "owasp": "A01:2017 - Injection",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/939.html"
+      ]
+    },
+    "dc595d5d930405488630588923ae2966a1c8d430cea39733327fa7a60d1915aaeb3fb1719399847681f472bc493030dc7c9a21fd310c720e90e0e1685868bfee_0": {
+      "uid": "dc595d5d930405488630588923ae2966a1c8d430cea39733327fa7a60d1915aaeb3fb1719399847681f472bc493030dc7c9a21fd310c720e90e0e1685868bfee_0",
+      "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+      "file": "/tmp/mcp_semgrep_q5sz1q33/repo/sast/python/project/badpython.py",
+      "code": "eval(user_input)",
+      "severity": "WARNING",
+      "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+      "semgrep_fingerprint": "dc595d5d930405488630588923ae2966a1c8d430cea39733327fa7a60d1915aaeb3fb1719399847681f472bc493030dc7c9a21fd310c720e90e0e1685868bfee_0",
+      "asvs": {
+        "control_id": "5.2.4 Dyanmic Code Execution Features",
+        "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+        "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+        "version": "4"
+      },
+      "owasp": [
+        "A03:2021 - Injection"
+      ],
+      "references": [
+        "https://owasp.org/Top10/A03_2021-Injection"
+      ]
+    },
+    "a3a9c36266d43a070af2a3909f5dfdc14ce4b0964720f4fb1afaffe638aad7f7f44dcea2ba2819eb42534991735b5841ef477b8b5be401a0519e02ada0dbc7e3_0": {
+      "uid": "a3a9c36266d43a070af2a3909f5dfdc14ce4b0964720f4fb1afaffe638aad7f7f44dcea2ba2819eb42534991735b5841ef477b8b5be401a0519e02ada0dbc7e3_0",
+      "rule_id": "python.lang.security.audit.md5-used-as-password.md5-used-as-password",
+      "file": "/tmp/mcp_semgrep_q5sz1q33/repo/sast/python/project/badpython.py",
+      "code": "password_hash = hashlib.md5(\"mypassword\".encode()).hexdigest()()",
+      "severity": "WARNING",
+      "message": "It looks like MD5 is used as a password hash. MD5 is not considered a secure password hash because it can be cracked by an attacker in a short amount of time. Use a suitable password hashing function such as scrypt. You can use `hashlib.scrypt`.",
+      "semgrep_fingerprint": "a3a9c36266d43a070af2a3909f5dfdc14ce4b0964720f4fb1afaffe638aad7f7f44dcea2ba2819eb42534991735b5841ef477b8b5be401a0519e02ada0dbc7e3_0",
+      "asvs": null,
+      "owasp": [
+        "A03:2017 - Sensitive Data Exposure",
+        "A02:2021 - Cryptographic Failures"
+      ],
+      "references": [
+        "https://tools.ietf.org/html/rfc6151",
+        "https://crypto.stackexchange.com/questions/44151/how-does-the-flame-malware-take-advantage-of-md5-collision",
+        "https://pycryptodome.readthedocs.io/en/latest/src/hash/sha3_256.html",
+        "https://security.stackexchange.com/questions/211/how-to-securely-hash-passwords",
+        "https://github.com/returntocorp/semgrep-rules/issues/1609",
+        "https://docs.python.org/3/library/hashlib.html#hashlib.scrypt"
+      ]
+    },
+    "93453383349f7ba51d52235395b3350df059a25a3a77c19cb963e1bb82398f468b63838b204b0c509af08dd3e1acfdc782dedb39c6233955728d572a63a03519_0": {
+      "uid": "93453383349f7ba51d52235395b3350df059a25a3a77c19cb963e1bb82398f468b63838b204b0c509af08dd3e1acfdc782dedb39c6233955728d572a63a03519_0",
+      "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "file": "/tmp/mcp_semgrep_q5sz1q33/repo/sast/python/project/main.py",
+      "code": "            with urllib.request.urlopen(zip_download_url, context=context) as response:",
+      "severity": "WARNING",
+      "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+      "semgrep_fingerprint": "93453383349f7ba51d52235395b3350df059a25a3a77c19cb963e1bb82398f468b63838b204b0c509af08dd3e1acfdc782dedb39c6233955728d572a63a03519_0",
+      "asvs": {
+        "control_id": "5.2.4 Dynamic Code Execution Features",
+        "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+        "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+        "version": "4"
+      },
+      "owasp": "A01:2017 - Injection",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/939.html"
+      ]
+    }
+  },
+  "topics": {},
+  "topic_drift": {},
+  "time_to_fix_store": {
+    "dc595d5d930405488630588923ae2966a1c8d430cea39733327fa7a60d1915aaeb3fb1719399847681f472bc493030dc7c9a21fd310c720e90e0e1685868bfee_0": {
+      "first_seen_sha": "7073ba560f73b28fc2cc06cf02332e0d95cf5aa3",
+      "first_seen_at": "2025-11-22T22:42:37.661666",
+      "last_seen_sha": "94093e359f09e752d5823ff5631104af841bbeb3",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "a3a9c36266d43a070af2a3909f5dfdc14ce4b0964720f4fb1afaffe638aad7f7f44dcea2ba2819eb42534991735b5841ef477b8b5be401a0519e02ada0dbc7e3_0": {
+      "first_seen_sha": "7073ba560f73b28fc2cc06cf02332e0d95cf5aa3",
+      "first_seen_at": "2025-11-22T22:42:37.661666",
+      "last_seen_sha": "94093e359f09e752d5823ff5631104af841bbeb3",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "93453383349f7ba51d52235395b3350df059a25a3a77c19cb963e1bb82398f468b63838b204b0c509af08dd3e1acfdc782dedb39c6233955728d572a63a03519_0": {
+      "first_seen_sha": "7073ba560f73b28fc2cc06cf02332e0d95cf5aa3",
+      "first_seen_at": "2025-11-22T22:42:37.661666",
+      "last_seen_sha": "94093e359f09e752d5823ff5631104af841bbeb3",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "97e739c7d38192232a124ffaab9c4a7e93731d05eb4130d75cb6330d393d8852d0bb8ae04c6b3f9a0a57f2b7c77b920debf9a1f19196886a8e65418e1fd81237_0": {
+      "first_seen_sha": "7073ba560f73b28fc2cc06cf02332e0d95cf5aa3",
+      "first_seen_at": "2025-11-22T22:42:37.661666",
+      "last_seen_sha": "94093e359f09e752d5823ff5631104af841bbeb3",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "97e739c7d38192232a124ffaab9c4a7e93731d05eb4130d75cb6330d393d8852d0bb8ae04c6b3f9a0a57f2b7c77b920debf9a1f19196886a8e65418e1fd81237_1": {
+      "first_seen_sha": "7073ba560f73b28fc2cc06cf02332e0d95cf5aa3",
+      "first_seen_at": "2025-11-22T22:42:37.661666",
+      "last_seen_sha": "94093e359f09e752d5823ff5631104af841bbeb3",
+      "resolved_sha": null,
+      "resolved_at": null
+    }
+  },
+  "enrichment": {
+    "type": "repo",
+    "repo": "victorstrandmoe97/python-example-projects",
+    "flag_status": "flagged",
+    "after": {
+      "total_findings": 5,
+      "rule_counts": {
+        "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected": 3,
+        "python.lang.security.audit.eval-detected.eval-detected": 1,
+        "python.lang.security.audit.md5-used-as-password.md5-used-as-password": 1
+      },
+      "owasp_counts": {
+        "A01:2017 - Injection": 3,
+        "A03:2021 - Injection": 1,
+        "A03:2017 - Sensitive Data Exposure": 1,
+        "A02:2021 - Cryptographic Failures": 1
+      },
+      "severity_counts": {
+        "WARNING": 5
+      },
+      "owasp_tags": [
+        "a01-2017",
+        "a02-2021",
+        "a03-2017",
+        "a03-2021"
+      ]
+    },
+    "semantic": {
+      "owasp_tags": [
+        "a01-2017",
+        "a02-2021",
+        "a03-2017",
+        "a03-2021"
+      ]
+    },
+    "rule_explanations": {
+      "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead. This relates to A01:2017 - Injection. Observed severity: WARNING in 3 finding(s).",
+      "python.lang.security.audit.eval-detected.eval-detected": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources. This relates to A03:2021 - Injection. Observed severity: WARNING in 1 finding(s).",
+      "python.lang.security.audit.md5-used-as-password.md5-used-as-password": "It looks like MD5 is used as a password hash. MD5 is not considered a secure password hash because it can be cracked by an attacker in a short amount of time. Use a suitable password hashing function such as scrypt. You can use `hashlib.scrypt`. This relates to A03:2017 - Sensitive Data Exposure. Observed severity: WARNING in 1 finding(s)."
+    },
+    "ml": {
+      "risk_score": null,
+      "risk_label": null,
+      "persistence": {}
+    },
+    "before": {
+      "total_findings": 5,
+      "rule_counts": {
+        "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected": 3,
+        "python.lang.security.audit.eval-detected.eval-detected": 1,
+        "python.lang.security.audit.md5-used-as-password.md5-used-as-password": 1
+      },
+      "owasp_counts": {
+        "A01:2017 - Injection": 3,
+        "A03:2021 - Injection": 1,
+        "A03:2017 - Sensitive Data Exposure": 1,
+        "A02:2021 - Cryptographic Failures": 1
+      },
+      "severity_counts": {
+        "WARNING": 5
+      },
+      "owasp_tags": [
+        "a01-2017",
+        "a02-2021",
+        "a03-2017",
+        "a03-2021"
+      ]
+    },
+    "diff": {
+      "total_delta": 0,
+      "rule_delta": {
+        "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected": 0,
+        "python.lang.security.audit.eval-detected.eval-detected": 0,
+        "python.lang.security.audit.md5-used-as-password.md5-used-as-password": 0
+      },
+      "owasp_delta": {
+        "A01:2017 - Injection": 0,
+        "A02:2021 - Cryptographic Failures": 0,
+        "A03:2017 - Sensitive Data Exposure": 0,
+        "A03:2021 - Injection": 0
+      }
+    }
+  },
+  "critic": {
+    "label": "unknown",
+    "raw_output": "critic_error: Repo id must be in the form 'repo_name' or 'namespace/repo_name': './calibration/tiny_security_critic'. Use `repo_type` argument if needed."
+  }
+}
