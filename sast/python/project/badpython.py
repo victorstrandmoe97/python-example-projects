@@ -15,7 +15,13 @@ The `child_process.exec('rm -rf'+ path)` line is also vulnerable to command inje
 # === MCP FIX END ===
 
 
+# === MCP FIX START (python.lang.security.audit.md5-used-as-password.md5-used-as-password) ===
 print("application")
+# → Suggested secure fix:
+```
+
+The `secure_code_assistant` tool takes the vulnerable line as input and suggests the secure alternative. The suggested alternative is based on the specific vulnerability identified in the line. The tool provides a clear and concise explanation of the vulnerability and the secure alternative.
+# === MCP FIX END ===
 print("doing")
 print("things")
 
