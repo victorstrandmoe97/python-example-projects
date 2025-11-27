@@ -1,0 +1,160 @@
+{
+  "commit_sha": "3707cd555b166855667ecc2fb107e047874ec471",
+  "timestamp": "2025-11-27T08:01:04.766583",
+  "stats": {
+    "total": 2,
+    "added": 0,
+    "removed": 1,
+    "persisted": 2
+  },
+  "diff": {
+    "added": [],
+    "removed": [
+      "1bd00958be6d1ac1e46c40f447875166855dbf4ddffa447ad0328386222dad1faf0d5f919ef2f58611cc2cc7561d8e5efae80179a4c91411272705afe9de9245_0"
+    ],
+    "persisted": [
+      "6e0255ee16152c2a2ca9bb24ad14152e8a343f5c238a9736e500ca101e36da5ab1c5530290b8341aa3b9fc08e33b2ef854f28a9a5de1dbc7f87134f9c333f528_0",
+      "6e0255ee16152c2a2ca9bb24ad14152e8a343f5c238a9736e500ca101e36da5ab1c5530290b8341aa3b9fc08e33b2ef854f28a9a5de1dbc7f87134f9c333f528_1"
+    ]
+  },
+  "vulns": {
+    "6e0255ee16152c2a2ca9bb24ad14152e8a343f5c238a9736e500ca101e36da5ab1c5530290b8341aa3b9fc08e33b2ef854f28a9a5de1dbc7f87134f9c333f528_0": {
+      "uid": "6e0255ee16152c2a2ca9bb24ad14152e8a343f5c238a9736e500ca101e36da5ab1c5530290b8341aa3b9fc08e33b2ef854f28a9a5de1dbc7f87134f9c333f528_0",
+      "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "file": "/tmp/mcp_semgrep_sam1f0vx/repo/@obsoletesoftware-composition-analysis/python/python-example/main.py",
+      "code": "    with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file:",
+      "severity": "WARNING",
+      "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+      "semgrep_fingerprint": "6e0255ee16152c2a2ca9bb24ad14152e8a343f5c238a9736e500ca101e36da5ab1c5530290b8341aa3b9fc08e33b2ef854f28a9a5de1dbc7f87134f9c333f528_0",
+      "asvs": {
+        "control_id": "5.2.4 Dynamic Code Execution Features",
+        "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+        "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+        "version": "4"
+      },
+      "owasp": "A01:2017 - Injection",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/939.html"
+      ]
+    },
+    "6e0255ee16152c2a2ca9bb24ad14152e8a343f5c238a9736e500ca101e36da5ab1c5530290b8341aa3b9fc08e33b2ef854f28a9a5de1dbc7f87134f9c333f528_1": {
+      "uid": "6e0255ee16152c2a2ca9bb24ad14152e8a343f5c238a9736e500ca101e36da5ab1c5530290b8341aa3b9fc08e33b2ef854f28a9a5de1dbc7f87134f9c333f528_1",
+      "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "file": "/tmp/mcp_semgrep_sam1f0vx/repo/@obsoletesoftware-composition-analysis/python/python-example/main.py",
+      "code": "    with urllib.request.urlopen(NVD_CPE_XML_DOWNLOAD_URL, context=context) as response, open(zip_path, 'wb') as out_file:",
+      "severity": "WARNING",
+      "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+      "semgrep_fingerprint": "6e0255ee16152c2a2ca9bb24ad14152e8a343f5c238a9736e500ca101e36da5ab1c5530290b8341aa3b9fc08e33b2ef854f28a9a5de1dbc7f87134f9c333f528_1",
+      "asvs": {
+        "control_id": "5.2.4 Dynamic Code Execution Features",
+        "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v52-sanitization-and-sandboxing-requirements",
+        "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+        "version": "4"
+      },
+      "owasp": "A01:2017 - Injection",
+      "references": [
+        "https://cwe.mitre.org/data/definitions/939.html"
+      ]
+    }
+  },
+  "topics": {},
+  "topic_drift": {},
+  "time_to_fix_store": {
+    "6e0255ee16152c2a2ca9bb24ad14152e8a343f5c238a9736e500ca101e36da5ab1c5530290b8341aa3b9fc08e33b2ef854f28a9a5de1dbc7f87134f9c333f528_0": {
+      "first_seen_sha": "215606140ca87c905e2ffd47ca29ae2a9af03040",
+      "first_seen_at": "2025-11-27T07:56:05.822218",
+      "last_seen_sha": "3707cd555b166855667ecc2fb107e047874ec471",
+      "resolved_sha": null,
+      "resolved_at": null
+    },
+    "d6785f3fd480302dddb130a46b48d40abee92c816d2b1c11dc6b9e2e061d5e95c03ba99a8c26bbd53526b5b73f0b9dc6a6cc45e56231f52aaf3ac0e08927222e_0": {
+      "first_seen_sha": "215606140ca87c905e2ffd47ca29ae2a9af03040",
+      "first_seen_at": "2025-11-27T07:56:05.822218",
+      "last_seen_sha": "3f7087189ebc1e15e0a55b13d397b232b3f4ef1b",
+      "resolved_sha": "ea99f0882df6518552f00d9ef843b3e98af2ea9a",
+      "resolved_at": "2025-11-27T07:59:17.735731"
+    },
+    "1bd00958be6d1ac1e46c40f447875166855dbf4ddffa447ad0328386222dad1faf0d5f919ef2f58611cc2cc7561d8e5efae80179a4c91411272705afe9de9245_0": {
+      "first_seen_sha": "215606140ca87c905e2ffd47ca29ae2a9af03040",
+      "first_seen_at": "2025-11-27T07:56:05.822218",
+      "last_seen_sha": "ea99f0882df6518552f00d9ef843b3e98af2ea9a",
+      "resolved_sha": "3707cd555b166855667ecc2fb107e047874ec471",
+      "resolved_at": "2025-11-27T08:01:04.766583"
+    },
+    "2965131700df3ffee061c091b11dc6d6c241d0cbdfc070515a00cd865a17c33fd9a7e3762406cf50bb16c893f9a9f66a7fd00863c24055ef55b122c9005a67e5_0": {
+      "first_seen_sha": "215606140ca87c905e2ffd47ca29ae2a9af03040",
+      "first_seen_at": "2025-11-27T07:56:05.822218",
+      "last_seen_sha": "3f7087189ebc1e15e0a55b13d397b232b3f4ef1b",
+      "resolved_sha": "ea99f0882df6518552f00d9ef843b3e98af2ea9a",
+      "resolved_at": "2025-11-27T07:59:17.735731"
+    },
+    "6e0255ee16152c2a2ca9bb24ad14152e8a343f5c238a9736e500ca101e36da5ab1c5530290b8341aa3b9fc08e33b2ef854f28a9a5de1dbc7f87134f9c333f528_1": {
+      "first_seen_sha": "215606140ca87c905e2ffd47ca29ae2a9af03040",
+      "first_seen_at": "2025-11-27T07:56:05.822218",
+      "last_seen_sha": "3707cd555b166855667ecc2fb107e047874ec471",
+      "resolved_sha": null,
+      "resolved_at": null
+    }
+  },
+  "enrichment": {
+    "type": "repo",
+    "repo": "victorstrandmoe97/python-example-projects",
+    "flag_status": "flagged",
+    "after": {
+      "total_findings": 2,
+      "rule_counts": {
+        "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected": 2
+      },
+      "owasp_counts": {
+        "A01:2017 - Injection": 2
+      },
+      "severity_counts": {
+        "WARNING": 2
+      },
+      "owasp_tags": [
+        "a01-2017"
+      ]
+    },
+    "semantic": {
+      "owasp_tags": [
+        "a01-2017"
+      ]
+    },
+    "rule_explanations": {
+      "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead. This relates to A01:2017 - Injection. Observed severity: WARNING in 2 finding(s)."
+    },
+    "ml": {
+      "risk_score": null,
+      "risk_label": null,
+      "persistence": {}
+    },
+    "before": {
+      "total_findings": 3,
+      "rule_counts": {
+        "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected": 3
+      },
+      "owasp_counts": {
+        "A01:2017 - Injection": 3
+      },
+      "severity_counts": {
+        "WARNING": 3
+      },
+      "owasp_tags": [
+        "a01-2017"
+      ]
+    },
+    "diff": {
+      "total_delta": -1,
+      "rule_delta": {
+        "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected": -1
+      },
+      "owasp_delta": {
+        "A01:2017 - Injection": -1
+      }
+    }
+  },
+  "critic": {
+    "label": "unknown",
+    "raw_output": "critic_error: Can't find 'adapter_config.json' at './calibration/tiny_security_critic'"
+  }
+}
