@@ -1,0 +1,4 @@
+{
+  "label": "unknown",
+  "raw_output": "critic_error: Can't find 'adapter_config.json' at './calibration/tiny_security_critic'"
+}
