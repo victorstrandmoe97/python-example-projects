@@ -15,7 +15,20 @@ ast.literal_eval() is a safer alternative to eval() for safely evaluating litera
 
 #
 # === MCP FIX END ===
+# === MCP FIX START (python.lang.security.audit.md5-used-as-password.md5-used-as-password) ===
+# Severity: WARNING
 
+# → Suggested secure fix:
+# Corrected code:
+import hashlib
+
+# Example usage:
+password = "mysecurepassword"
+salt = b"somesalt"
+hashed_password = hashlib.scrypt(password.encode(), salt=salt, n=2**14, r=8, p=1)
+print(hashed_password)
+```
+# === MCP FIX END ===
 
 print("application")
 print("doing")
